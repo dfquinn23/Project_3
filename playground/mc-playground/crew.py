@@ -90,7 +90,7 @@ class Tasks:
                 "A JSON object containing the company name and the company's stock market ticker symbol. For example: 'AAPL' would be for the Apple."
             ),
             # context=tasks,
-            # output_json=CompanyInfo
+            output_json=CompanyInfo
         )
     
 class CompanyResearchCrew:
