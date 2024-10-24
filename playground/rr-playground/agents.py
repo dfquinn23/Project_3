@@ -14,7 +14,7 @@ if not api_key:
     raise ValueError("OPENAI_API_KEY not found in environment variables")
 
 # Initialize OpenAI LLM with the API key
-llm = OpenAI(api_key=api_key, model="gpt-4", temperature=0.3)
+llm = OpenAI(api_key=api_key, model="gpt-3.5-turbo-1106", temperature=0.3)
 
 class StockAnalysisAgents:
     def __init__(self, llm, symbol):
@@ -115,11 +115,6 @@ class StockAnalysisAgents:
             )
         
         return tasks
-
-# Example of how to instantiate StockAnalysisAgents correctly
-symbol = "AAPL"  # Replace with the actual stock symbol you want to analyze
-
-stock_analysis_agents = StockAnalysisAgents(llm, symbol)
 
 # Make sure this line is at the end of the file
 __all__ = ['StockAnalysisAgents']

@@ -5,9 +5,12 @@ from typing import List, Dict
 import os
 from datetime import datetime, timedelta
 import json
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 class StockAnalyzer:
-    def __init__(self, symbol: str, days: int = 30):
+    def __init__(self, symbol: str, days: int = 1):
         self.symbol = symbol
         self.days = days
         self.end_date = datetime.now()
@@ -22,12 +25,24 @@ class StockAnalyzer:
         api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
         url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={self.symbol}&apikey={api_key}'
         
-        r = requests.get(url)
-        data = r.json()
-        
-        if 'feed' in data:
-            return data['feed']
-        return []
+        logging.info(f"Fetching news headlines for {self.symbol}")
+        try:
+            r = requests.get(url, timeout=10)  # Add a timeout
+            r.raise_for_status()  # Raise an exception for bad status codes
+            data = r.json()
+            
+            if 'feed' in data:
+                logging.info(f"Successfully fetched {len(data['feed'])} headlines")
+                return data['feed']
+            elif 'Note' in data:
+                logging.warning(f"API limit reached: {data['Note']}")
+                return []
+            else:
+                logging.error(f"Unexpected response structure: {data.keys()}")
+                return []
+        except requests.exceptions.RequestException as e:
+            logging.error(f"Error fetching news headlines: {str(e)}")
+            return []
 
     def analyze_headlines_sentiment(self, headlines: List[Dict]) -> Dict:
         sentiment_scores = [headline.get('overall_sentiment_score', 0) for headline in headlines]

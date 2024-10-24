@@ -10,6 +10,8 @@ from agents import StockAnalysisAgents
 from tools import StockAnalyzer
 import time
 import random
+import logging
+import io
 
 # Load environment variables
 load_dotenv()
@@ -20,42 +22,46 @@ if not api_key:
     raise ValueError("OPENAI_API_KEY not found in environment variables")
 
 # Initialize OpenAI LLM
-llm = OpenAI(api_key=api_key, model="gpt-4o-mini", temperature=0.3)
+llm = OpenAI(api_key=api_key, model="gpt-3.5-turbo-1106", temperature=0.3)
 
 def run_analysis(symbol, days, progress_callback):
     try:
-        # Create StockAnalysisAgents instance
+        progress_callback(5, "Initializing analysis...")
         stock_analysis_agents = StockAnalysisAgents(llm, symbol)
 
-        # Create agents
+        progress_callback(10, "Creating agents...")
         agents = stock_analysis_agents.create_agents()
-        progress_callback(20, "Agents created")
 
-        # Create tasks
+        progress_callback(20, "Creating tasks...")
         tasks = stock_analysis_agents.create_tasks(agents, days)
-        progress_callback(40, "Tasks created")
 
-        # Create the crew
+        progress_callback(30, "Assembling crew...")
         crew = Crew(
             agents=agents,
             tasks=tasks,
             verbose=True
         )
-        progress_callback(60, "Crew assembled")
 
-        # Run the crew
-        result = crew.kickoff()
-        progress_callback(80, "Analysis completed")
+        progress_callback(40, "Starting news scraping...")
+        # Capture logs
+        with io.StringIO() as log_capture:
+            log_handler = logging.StreamHandler(log_capture)
+            logging.getLogger().addHandler(log_handler)
+            
+            result = crew.kickoff()
+            
+            logging.getLogger().removeHandler(log_handler)
+            logs = log_capture.getvalue()
 
-        # Generate JSON output
+        progress_callback(80, "Generating final analysis...")
         stock_analyzer = StockAnalyzer(symbol, days)
         stock_analyzer.generate_json_output()
-        progress_callback(100, "JSON output generated")
 
-        return result
+        progress_callback(100, "Analysis complete!")
+        return result, logs
     except Exception as e:
         st.error(f"An error occurred during analysis: {str(e)}")
-        return None
+        return None, str(e)
 
 def load_analysis_results(symbol):
     with open(f'{symbol}_analysis.json', 'r') as f:
@@ -110,17 +116,38 @@ def get_stock_fun_fact():
     ]
     return random.choice(fun_facts)
 
-st.set_page_config(page_title="Stock Sentiment Analysis", layout="wide")
+# Set page config
+st.set_page_config(page_title="Stock Sentiment Analysis", layout="wide", initial_sidebar_state="expanded")
 
-st.title("Stock Sentiment Analysis")
+# Custom CSS
+st.markdown("""
+    <style>
+    .big-font {
+        font-size:30px !important;
+        font-weight: bold;
+    }
+    .medium-font {
+        font-size:20px !important;
+        font-weight: bold;
+    }
+    .stProgress > div > div > div > div {
+        background-color: #4CAF50;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
+# Title
+st.markdown('<p class="big-font">Stock Sentiment Analysis</p>', unsafe_allow_html=True)
+
+# Create two columns
 col1, col2 = st.columns([1, 2])
 
 with col1:
+    st.markdown('<p class="medium-font">Input Parameters</p>', unsafe_allow_html=True)
     symbol = st.text_input("Enter stock symbol (e.g., AAPL):", value="AAPL")
-    days = st.number_input("Number of days for analysis:", min_value=1, max_value=30, value=1)
+    days = st.slider("Number of days for analysis:", min_value=1, max_value=30, value=1)
     
-    if st.button("Run Analysis"):
+    if st.button("Run Analysis", key="run_analysis"):
         progress_bar = st.progress(0)
         status_text = st.empty()
         fun_fact = st.empty()
@@ -128,33 +155,42 @@ with col1:
         
         def update_progress(progress, status):
             progress_bar.progress(progress)
-            status_text.text(status)
+            status_text.markdown(f"**Status:** {status}")
             if random.random() < 0.3:  # 30% chance to show a fun fact
-                fun_fact.info(f"Fun Fact: {get_stock_fun_fact()}")
+                fun_fact.info(f"**Fun Fact:** {get_stock_fun_fact()}")
         
-        result = run_analysis(symbol, days, update_progress)
+        with st.spinner('Running analysis...'):
+            result, logs = run_analysis(symbol, days, update_progress)
         
         if result:
-            result_placeholder.write("Crew result:", result)
+            st.success("Analysis complete!")
+            with st.expander("View Crew Result"):
+                st.json(result)
+            with st.expander("View Analysis Logs"):
+                st.text_area("Logs", logs, height=300)
         else:
-            st.warning("Analysis failed. Please try again.")
+            st.error("Analysis failed. Please check the logs below.")
+            st.text_area("Error Logs", logs, height=300)
 
 with col2:
     try:
         results = load_analysis_results(symbol)
         company_info = get_company_info(symbol)
 
-        st.subheader(f"{company_info['name']} ({symbol})")
-        if company_info['logo_url']:
-            st.image(company_info['logo_url'], width=100)
-        st.write(f"Sector: {company_info['sector']}")
-        st.write(f"Industry: {company_info['industry']}")
+        st.markdown(f'<p class="medium-font">{company_info["name"]} ({symbol})</p>', unsafe_allow_html=True)
+        col1, col2 = st.columns([1, 3])
+        with col1:
+            if company_info['logo_url']:
+                st.image(company_info['logo_url'], width=100)
+        with col2:
+            st.write(f"**Sector:** {company_info['sector']}")
+            st.write(f"**Industry:** {company_info['industry']}")
 
         sentiment_score = results['sentiment_analysis']['average_sentiment']
         fig = create_gauge_chart(sentiment_score)
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
 
-        st.subheader("Financial Metrics")
+        st.markdown('<p class="medium-font">Financial Metrics</p>', unsafe_allow_html=True)
         metrics = results['financial_metrics']
         col1, col2, col3, col4 = st.columns(4)
         col1.metric("Daily High", f"${metrics['daily_high']:.2f}")
@@ -162,15 +198,16 @@ with col2:
         col3.metric("Volume", f"{metrics['volume']:,}")
         col4.metric("Market Cap", f"${metrics['market_cap']:,}")
 
-        st.subheader("Recent Headlines")
+        st.markdown('<p class="medium-font">Recent Headlines</p>', unsafe_allow_html=True)
         for headline in results['headlines']:
-            st.write(f"- {headline['title']}")
+            st.markdown(f"- {headline['title']}")
 
-        st.subheader("Stock Performance")
+        st.markdown('<p class="medium-font">Stock Performance</p>', unsafe_allow_html=True)
         performance = results['stock_performance']
-        st.write(f"Start Price: ${performance['start_price']:.2f}")
-        st.write(f"End Price: ${performance['end_price']:.2f}")
-        st.write(f"Percent Change: {performance['percent_change']:.2f}%")
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Start Price", f"${performance['start_price']:.2f}")
+        col2.metric("End Price", f"${performance['end_price']:.2f}")
+        col3.metric("Percent Change", f"{performance['percent_change']:.2f}%")
 
     except FileNotFoundError:
         st.warning("No analysis results found. Please run the analysis first.")

@@ -1,16 +1,246 @@
 {
   "symbol": "NVDA",
-  "analysis_period": "2024-10-22 to 2024-10-23",
+  "analysis_period": "2024-10-23 to 2024-10-24",
   "stock_performance": {
-    "start_price": 143.58999633789062,
-    "end_price": 143.58999633789062,
+    "start_price": 139.55999755859375,
+    "end_price": 139.55999755859375,
     "percent_change": 0.0
   },
   "sentiment_analysis": {
-    "average_sentiment": 0.21606392000000002,
+    "average_sentiment": 0.2208431200000001,
     "num_headlines": 50
   },
+  "financial_metrics": {
+    "daily_high": 142.43,
+    "daily_low": 137.46,
+    "volume": 283965277,
+    "market_cap": 3423406653440
+  },
   "headlines": [
+    {
+      "title": "T-Mobile US  ( TMUS )  Q3 2024 Earnings Call Transcript",
+      "url": "https://www.fool.com/earnings/call-transcripts/2024/10/23/t-mobile-us-tmus-q3-2024-earnings-call-transcript/",
+      "time_published": "20241024T033023",
+      "authors": [
+        "Motley Fool Transcribing"
+      ],
+      "summary": "TMUS earnings call for the period ending September 30, 2024.",
+      "banner_image": "https://g.foolcdn.com/misc-assets/fool-transcripts-logo.png",
+      "source": "Motley Fool",
+      "category_within_source": "n/a",
+      "source_domain": "www.fool.com",
+      "topics": [
+        {
+          "topic": "Energy & Transportation",
+          "relevance_score": "0.25"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.25"
+        },
+        {
+          "topic": "Finance",
+          "relevance_score": "0.25"
+        },
+        {
+          "topic": "Financial Markets",
+          "relevance_score": "0.796627"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "0.25"
+        },
+        {
+          "topic": "Earnings",
+          "relevance_score": "1.0"
+        },
+        {
+          "topic": "Economy - Macro",
+          "relevance_score": "0.158519"
+        }
+      ],
+      "overall_sentiment_score": 0.29936,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "TMUS",
+          "relevance_score": "0.00872",
+          "ticker_sentiment_score": "0.095512",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.00436",
+          "ticker_sentiment_score": "0.076341",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "BCS",
+          "relevance_score": "0.00436",
+          "ticker_sentiment_score": "0.112167",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "C",
+          "relevance_score": "0.017439",
+          "ticker_sentiment_score": "0.06856",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "BAC",
+          "relevance_score": "0.00436",
+          "ticker_sentiment_score": "0.112167",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "VZ",
+          "relevance_score": "0.00872",
+          "ticker_sentiment_score": "0.081172",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "WFC",
+          "relevance_score": "0.00436",
+          "ticker_sentiment_score": "0.099429",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "MS",
+          "relevance_score": "0.00436",
+          "ticker_sentiment_score": "0.112167",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "NOK",
+          "relevance_score": "0.00436",
+          "ticker_sentiment_score": "0.076341",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AAL",
+          "relevance_score": "0.00436",
+          "ticker_sentiment_score": "0.262218",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "GS",
+          "relevance_score": "0.00436",
+          "ticker_sentiment_score": "0.112167",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "ServiceNow  ( NOW )  Q3 2024 Earnings Call Transcript",
+      "url": "https://www.fool.com/earnings/call-transcripts/2024/10/23/servicenow-now-q3-2024-earnings-call-transcript/",
+      "time_published": "20241024T033020",
+      "authors": [
+        "Motley Fool Transcribing"
+      ],
+      "summary": "NOW earnings call for the period ending September 30, 2024.",
+      "banner_image": "https://g.foolcdn.com/misc-assets/fool-transcripts-logo.png",
+      "source": "Motley Fool",
+      "category_within_source": "n/a",
+      "source_domain": "www.fool.com",
+      "topics": [
+        {
+          "topic": "Financial Markets",
+          "relevance_score": "0.99986"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Earnings",
+          "relevance_score": "0.999986"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Finance",
+          "relevance_score": "0.333333"
+        }
+      ],
+      "overall_sentiment_score": 0.361171,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.009026",
+          "ticker_sentiment_score": "0.147893",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "GOOG",
+          "relevance_score": "0.036091",
+          "ticker_sentiment_score": "0.19198",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.022562",
+          "ticker_sentiment_score": "0.204331",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "BCS",
+          "relevance_score": "0.004513",
+          "ticker_sentiment_score": "0.112315",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "BAC",
+          "relevance_score": "0.004513",
+          "ticker_sentiment_score": "0.112315",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "WFC",
+          "relevance_score": "0.004513",
+          "ticker_sentiment_score": "0.203549",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "MS",
+          "relevance_score": "0.004513",
+          "ticker_sentiment_score": "0.112315",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "NOW",
+          "relevance_score": "0.282641",
+          "ticker_sentiment_score": "0.315871",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "LYG",
+          "relevance_score": "0.004513",
+          "ticker_sentiment_score": "0.192599",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "ACN",
+          "relevance_score": "0.004513",
+          "ticker_sentiment_score": "0.192629",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "GS",
+          "relevance_score": "0.004513",
+          "ticker_sentiment_score": "0.112315",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "FOREX:GBP",
+          "relevance_score": "0.004513",
+          "ticker_sentiment_score": "0.025306",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
     {
       "title": "SK Hynix posts record profit, outshining Samsung in AI chip sales",
       "url": "https://www.scmp.com/tech/big-tech/article/3283605/nvidia-supplier-sk-hynix-posts-record-profit-outshining-samsung-ai-chip-sales",
@@ -284,130 +514,6 @@
           "ticker": "HWM",
           "relevance_score": "0.049322",
           "ticker_sentiment_score": "0.066329",
-          "ticker_sentiment_label": "Neutral"
-        }
-      ]
-    },
-    {
-      "title": "Mag 7 Earnings Loom: What Can Investors Expect?",
-      "url": "https://www.zacks.com/commentary/2356376/mag-7-earnings-loom-what-can-investors-expect",
-      "time_published": "20241023T224700",
-      "authors": [
-        "Sheraz Mian"
-      ],
-      "summary": "Without the Mag 7's substantial earnings contribution, Q3 earnings for the remaining S&P 500 index would be modestly in negative territory. Next week, several will reveal their results.",
-      "banner_image": "https://staticx-tuner.zacks.com/images/articles/main/f8/14626.jpg",
-      "source": "Zacks Commentary",
-      "category_within_source": "n/a",
-      "source_domain": "www.zacks.com",
-      "topics": [
-        {
-          "topic": "Retail & Wholesale",
-          "relevance_score": "0.333333"
-        },
-        {
-          "topic": "Manufacturing",
-          "relevance_score": "0.333333"
-        },
-        {
-          "topic": "Earnings",
-          "relevance_score": "1.0"
-        },
-        {
-          "topic": "Technology",
-          "relevance_score": "0.333333"
-        }
-      ],
-      "overall_sentiment_score": 0.137078,
-      "overall_sentiment_label": "Neutral",
-      "ticker_sentiment": [
-        {
-          "ticker": "MSFT",
-          "relevance_score": "0.176717",
-          "ticker_sentiment_score": "0.061954",
-          "ticker_sentiment_label": "Neutral"
-        },
-        {
-          "ticker": "NVDA",
-          "relevance_score": "0.059341",
-          "ticker_sentiment_score": "-0.086997",
-          "ticker_sentiment_label": "Neutral"
-        },
-        {
-          "ticker": "AAPL",
-          "relevance_score": "0.118354",
-          "ticker_sentiment_score": "0.0",
-          "ticker_sentiment_label": "Neutral"
-        },
-        {
-          "ticker": "AMZN",
-          "relevance_score": "0.176717",
-          "ticker_sentiment_score": "0.061954",
-          "ticker_sentiment_label": "Neutral"
-        }
-      ]
-    },
-    {
-      "title": "3 Best Tech Stocks to Buy in October",
-      "url": "https://www.fool.com/investing/2024/10/23/3-best-tech-stocks-to-buy-in-october/",
-      "time_published": "20241023T224500",
-      "authors": [
-        "Jake Lerch"
-      ],
-      "summary": "Technology stocks continue to show their staying power.",
-      "banner_image": "https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F792856%2Fpltr-pypl-palantir-stock-market-investment.jpg&op=resize&w=700",
-      "source": "Motley Fool",
-      "category_within_source": "n/a",
-      "source_domain": "www.fool.com",
-      "topics": [
-        {
-          "topic": "Financial Markets",
-          "relevance_score": "0.459462"
-        },
-        {
-          "topic": "Manufacturing",
-          "relevance_score": "0.5"
-        },
-        {
-          "topic": "Earnings",
-          "relevance_score": "0.938793"
-        },
-        {
-          "topic": "Technology",
-          "relevance_score": "0.5"
-        }
-      ],
-      "overall_sentiment_score": 0.366286,
-      "overall_sentiment_label": "Bullish",
-      "ticker_sentiment": [
-        {
-          "ticker": "AMD",
-          "relevance_score": "0.061003",
-          "ticker_sentiment_score": "0.107009",
-          "ticker_sentiment_label": "Neutral"
-        },
-        {
-          "ticker": "PYPL",
-          "relevance_score": "0.240489",
-          "ticker_sentiment_score": "0.310558",
-          "ticker_sentiment_label": "Somewhat-Bullish"
-        },
-        {
-          "ticker": "NVDA",
-          "relevance_score": "0.061003",
-          "ticker_sentiment_score": "0.107009",
-          "ticker_sentiment_label": "Neutral"
-        },
-        {
-          "ticker": "DUOL",
-          "relevance_score": "0.353898",
-          "ticker_sentiment_score": "0.469949",
-          "ticker_sentiment_label": "Bullish"
-        },
-        {
-          "ticker": "TSM",
-          "relevance_score": "0.061003",
-          "ticker_sentiment_score": "0.107009",
           "ticker_sentiment_label": "Neutral"
         }
       ]
