@@ -1,0 +1,392 @@
+{
+  "symbol": "MSFT",
+  "analysis_period": "2024-10-22 to 2024-10-23",
+  "stock_performance": {
+    "start_price": 427.510009765625,
+    "end_price": 427.510009765625,
+    "percent_change": 0.0
+  },
+  "sentiment_analysis": {
+    "average_sentiment": 0.18887183999999993,
+    "num_headlines": 50
+  },
+  "financial_metrics": {
+    "daily_high": 431.08,
+    "daily_low": 422.53,
+    "volume": 19562405,
+    "market_cap": 3156068794368
+  },
+  "headlines": [
+    {
+      "title": "Thursday's big stock stories: What's likely to move the market in the next trading session",
+      "url": "https://www.cnbc.com/2024/10/23/thursdays-big-stock-stories-whats-likely-to-move-the-market.html",
+      "time_published": "20241024T002533",
+      "authors": [],
+      "summary": "The 30-stock Dow suffered its worst decline in more than a month on Wednesday, and it extended its losing run to a third day.",
+      "banner_image": null,
+      "source": "CNBC",
+      "category_within_source": "Investing",
+      "source_domain": "www.cnbc.com",
+      "topics": [
+        {
+          "topic": "Financial Markets",
+          "relevance_score": "0.999999"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "0.2"
+        },
+        {
+          "topic": "Real Estate & Construction",
+          "relevance_score": "0.2"
+        },
+        {
+          "topic": "Energy & Transportation",
+          "relevance_score": "0.2"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.2"
+        },
+        {
+          "topic": "Finance",
+          "relevance_score": "0.2"
+        }
+      ],
+      "overall_sentiment_score": 0.046505,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.098456",
+          "ticker_sentiment_score": "0.060187",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "UAL",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.083233",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "DCOM",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.04846",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "ETR",
+          "relevance_score": "0.098456",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "VLY",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "WY",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "D",
+          "relevance_score": "0.098456",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AAL",
+          "relevance_score": "0.098456",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "IVZ",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "-0.003998",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "LUV",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "HIFS",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.04846",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.135084",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "OFG",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "TCBI",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.04846",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "DTE",
+          "relevance_score": "0.098456",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "CZBS",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "FIZN",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "CNUN",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.04846",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "ABCB",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "-0.139079",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "BA",
+          "relevance_score": "0.147216",
+          "ticker_sentiment_score": "-0.100297",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "ED",
+          "relevance_score": "0.098456",
+          "ticker_sentiment_score": "0.075029",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "HWM",
+          "relevance_score": "0.049322",
+          "ticker_sentiment_score": "0.066329",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Mag 7 Earnings Loom: What Can Investors Expect?",
+      "url": "https://www.zacks.com/commentary/2356376/mag-7-earnings-loom-what-can-investors-expect",
+      "time_published": "20241023T224700",
+      "authors": [
+        "Sheraz Mian"
+      ],
+      "summary": "Without the Mag 7's substantial earnings contribution, Q3 earnings for the remaining S&P 500 index would be modestly in negative territory. Next week, several will reveal their results.",
+      "banner_image": "https://staticx-tuner.zacks.com/images/articles/main/f8/14626.jpg",
+      "source": "Zacks Commentary",
+      "category_within_source": "n/a",
+      "source_domain": "www.zacks.com",
+      "topics": [
+        {
+          "topic": "Retail & Wholesale",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Earnings",
+          "relevance_score": "1.0"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.333333"
+        }
+      ],
+      "overall_sentiment_score": 0.137078,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.176717",
+          "ticker_sentiment_score": "0.061954",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.059341",
+          "ticker_sentiment_score": "-0.086997",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.118354",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AMZN",
+          "relevance_score": "0.176717",
+          "ticker_sentiment_score": "0.061954",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Mag 7 Earnings Loom: What Can Investors Expect?",
+      "url": "https://www.zacks.com/commentary/2356392/mag-7-earnings-loom-what-can-investors-expect",
+      "time_published": "20241023T224500",
+      "authors": [
+        "Sheraz Mian"
+      ],
+      "summary": "Without the Mag 7's substantial earnings contribution, Q3 earnings for the remaining S&P 500 index would be modestly in negative territory. Next week, several will reveal their results.",
+      "banner_image": "https://staticx-tuner.zacks.com/images/articles/main/f8/14626.jpg",
+      "source": "Zacks Commentary",
+      "category_within_source": "n/a",
+      "source_domain": "www.zacks.com",
+      "topics": [
+        {
+          "topic": "Retail & Wholesale",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Earnings",
+          "relevance_score": "1.0"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.333333"
+        }
+      ],
+      "overall_sentiment_score": 0.137078,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.176717",
+          "ticker_sentiment_score": "0.061954",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.059341",
+          "ticker_sentiment_score": "-0.086997",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.118354",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AMZN",
+          "relevance_score": "0.176717",
+          "ticker_sentiment_score": "0.061954",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Lazarus Group exploited Chrome vulnerability with fake NFT game",
+      "url": "https://cointelegraph.com/news/north-korean-lazarus-group-chrome-zero-day-nft-game-hack",
+      "time_published": "20241023T213245",
+      "authors": [
+        "Derek Andersen"
+      ],
+      "summary": "The North Koreans invested great effort in creating and promoting the game that apparently drained users' wallets.",
+      "banner_image": "https://images.cointelegraph.com/cdn-cgi/image/format=auto,onerror=redirect,quality=90,width=1200/https://s3.cointelegraph.com/uploads/2024-10/0192bb47-b67e-7339-be8c-e92025bd7df3",
+      "source": "Cointelegraph",
+      "category_within_source": "n/a",
+      "source_domain": "cointelegraph.com",
+      "topics": [
+        {
+          "topic": "Technology",
+          "relevance_score": "1.0"
+        },
+        {
+          "topic": "Blockchain",
+          "relevance_score": "0.310843"
+        }
+      ],
+      "overall_sentiment_score": -0.276035,
+      "overall_sentiment_label": "Somewhat-Bearish",
+      "ticker_sentiment": [
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.124164",
+          "ticker_sentiment_score": "-0.151988",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        },
+        {
+          "ticker": "GOOG",
+          "relevance_score": "0.468029",
+          "ticker_sentiment_score": "-0.47299",
+          "ticker_sentiment_label": "Bearish"
+        }
+      ]
+    },
+    {
+      "title": "SAG-AFTRA Reaches Over 120 AI Agreements, Negotiations With Activision, EA, WB Come Next - Microsoft  ( NASDAQ:MSFT ) , Electronic Arts  ( NASDAQ:EA ) ",
+      "url": "https://www.benzinga.com/general/gaming/24/10/41502604/sag-aftra-reaches-over-120-ai-agreements-negotiations-with-activision-ea-wb-come-next",
+      "time_published": "20241023T205335",
+      "authors": [
+        "Franca Quarneti"
+      ],
+      "summary": "SAG-AFTRA has announced that more than 120 video game contracts from 49 companies have been signed as part of its ongoing negotiations with the gaming industry. These agreements are set to offer key protections for actors, particularly concerning the use of artificial intelligence ( AI ) in game ...",
+      "banner_image": "https://cdn.benzinga.com/files/images/story/2024/10/23/New-York---November-2---2023-Sag-aftra-M.jpeg?width=1200&height=800&fit=crop",
+      "source": "Benzinga",
+      "category_within_source": "General",
+      "source_domain": "www.benzinga.com",
+      "topics": [
+        {
+          "topic": "Technology",
+          "relevance_score": "1.0"
+        }
+      ],
+      "overall_sentiment_score": 0.365349,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "EA",
+          "relevance_score": "0.201523",
+          "ticker_sentiment_score": "0.049236",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.201523",
+          "ticker_sentiment_score": "0.049236",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "TTWO",
+          "relevance_score": "0.201523",
+          "ticker_sentiment_score": "0.049236",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    }
+  ]
+}
