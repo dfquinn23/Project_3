@@ -17,14 +17,14 @@ if not api_key:
     raise ValueError("OPENAI_API_KEY not found in environment variables")
 
 # Initialize OpenAI LLM
-llm = OpenAI(api_key=api_key, model="gpt-4o-mini", temperature=0.3)  # Changed to gpt-4
+llm = OpenAI(api_key=api_key, model="gpt-4o-mini", temperature=0.3) 
 
 # Define the stock symbol and analysis period
-symbol = "SOFI"
+symbol = "TSLA"
 days = 1
 
 # Create StockAnalysisAgents instance
-stock_analysis_agents = StockAnalysisAgents(llm, symbol)
+stock_analysis_agents = StockAnalysisAgents(llm,symbol)
 
 # Create agents
 agents = stock_analysis_agents.create_agents()

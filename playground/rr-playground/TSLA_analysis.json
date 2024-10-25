@@ -1,0 +1,294 @@
+{
+  "symbol": "TSLA",
+  "analysis_period": "2024-10-23 to 2024-10-24",
+  "stock_performance": {
+    "start_price": 213.64999389648438,
+    "end_price": 213.64999389648438,
+    "percent_change": 0.0
+  },
+  "sentiment_analysis": {
+    "average_sentiment": 0.20407074000000003,
+    "num_headlines": 50
+  },
+  "financial_metrics": {
+    "daily_high": 262.1199,
+    "daily_low": 242.65,
+    "volume": 200843843,
+    "market_cap": 832139821056
+  },
+  "headlines": [
+    {
+      "title": "Volkswagen's Scout Motors reveals first EVs as it shifts to include plug-in hybrids",
+      "url": "https://www.cnbc.com/2024/10/24/volkswagen-scout-motors-ev-hybrids.html",
+      "time_published": "20241024T223001",
+      "authors": [],
+      "summary": "Scout, a former American brand from 1961 to 1980, was expected to exclusively offer EVs in a bid for the German automaker to expand its presence in the U.S.",
+      "banner_image": null,
+      "source": "CNBC",
+      "category_within_source": "Business",
+      "source_domain": "www.cnbc.com",
+      "topics": [
+        {
+          "topic": "Real Estate & Construction",
+          "relevance_score": "0.5"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "0.5"
+        }
+      ],
+      "overall_sentiment_score": 0.185435,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "LCID",
+          "relevance_score": "0.037446",
+          "ticker_sentiment_score": "0.104499",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "RIVN",
+          "relevance_score": "0.037446",
+          "ticker_sentiment_score": "0.104499",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "TSLA",
+          "relevance_score": "0.037446",
+          "ticker_sentiment_score": "-0.038126",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "GM",
+          "relevance_score": "0.074809",
+          "ticker_sentiment_score": "0.002022",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Jim Cramer explains why fossil fuels remain vital as the Big Tech boom continues",
+      "url": "https://www.cnbc.com/2024/10/24/jim-cramer-explains-why-fossil-fuels-remain-vital-amid-the-tech-boom.html",
+      "time_published": "20241024T221825",
+      "authors": [],
+      "summary": "CNBC's Jim Cramer noted Big Tech's growing energy demands, with companies like Meta, Nvidia, Google and Microsoft building more and more data centers.",
+      "banner_image": null,
+      "source": "CNBC",
+      "category_within_source": "Top News",
+      "source_domain": "www.cnbc.com",
+      "topics": [
+        {
+          "topic": "Financial Markets",
+          "relevance_score": "0.714479"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "0.5"
+        },
+        {
+          "topic": "Earnings",
+          "relevance_score": "0.158519"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.5"
+        }
+      ],
+      "overall_sentiment_score": 0.158111,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.188928",
+          "ticker_sentiment_score": "0.138228",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "GOOG",
+          "relevance_score": "0.188928",
+          "ticker_sentiment_score": "0.138228",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "META",
+          "relevance_score": "0.095138",
+          "ticker_sentiment_score": "-0.095249",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.188928",
+          "ticker_sentiment_score": "0.138228",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "TSLA",
+          "relevance_score": "0.095138",
+          "ticker_sentiment_score": "-0.068876",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "This Tesla Analyst Turns Bullish; Here Are Top 5 Upgrades For Thursday - Tesla  ( NASDAQ:TSLA ) ",
+      "url": "https://www.benzinga.com/analyst-ratings/upgrades/24/10/41527272/this-tesla-analyst-turns-bullish-here-are-top-5-upgrades-for-thursday",
+      "time_published": "20241024T180752",
+      "authors": [
+        "Avi Kapoor"
+      ],
+      "summary": "Top Wall Street analysts changed their outlook on these top names. For a complete view of all analyst rating changes, including upgrades and downgrades, please see our analyst ratings page. KGI Securities analyst Terry Lee upgraded Tesla TSLA from Neutral to Outperform and announced a $276 price ...",
+      "banner_image": "https://editorial-assets.benzinga.com/wp-content/uploads/2024/10/24140730/image-243-1024x530.png",
+      "source": "Benzinga",
+      "category_within_source": "Trading",
+      "source_domain": "www.benzinga.com",
+      "topics": [
+        {
+          "topic": "Life Sciences",
+          "relevance_score": "0.25"
+        },
+        {
+          "topic": "Financial Markets",
+          "relevance_score": "0.962106"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "0.25"
+        },
+        {
+          "topic": "Energy & Transportation",
+          "relevance_score": "0.25"
+        },
+        {
+          "topic": "Finance",
+          "relevance_score": "0.25"
+        }
+      ],
+      "overall_sentiment_score": 0.374826,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "NEP",
+          "relevance_score": "0.371523",
+          "ticker_sentiment_score": "0.277708",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "TSLA",
+          "relevance_score": "0.481177",
+          "ticker_sentiment_score": "0.670559",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "RF",
+          "relevance_score": "0.252987",
+          "ticker_sentiment_score": "0.310322",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "CP",
+          "relevance_score": "0.252987",
+          "ticker_sentiment_score": "0.166764",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "STE",
+          "relevance_score": "0.371523",
+          "ticker_sentiment_score": "0.321277",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "NEE",
+          "relevance_score": "0.252987",
+          "ticker_sentiment_score": "0.20831",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Profiting From Tesla's Earnings Beat - Tesla  ( NASDAQ:TSLA ) ",
+      "url": "https://www.benzinga.com/markets/24/10/41526856/profiting-from-teslas-earnings-beat",
+      "time_published": "20241024T180252",
+      "authors": [
+        "David Pinsen"
+      ],
+      "summary": "Two weeks ago, Elon Musk unveiled Tesla Inc.'s TSLA new Robotaxi, along with its Art Deco Robovan, and Tesla's Optimus humanoid robots. I followed the commentary and video clips on X at the time, and found the event impressive. Below is CNET's 8-minute supercut version, if you missed it.",
+      "banner_image": "https://contributor-assets.benzinga.com/wp-content/uploads/2024/10/24155746/Boeing-Trade-Alert.jpg",
+      "source": "Benzinga",
+      "category_within_source": "General",
+      "source_domain": "www.benzinga.com",
+      "topics": [
+        {
+          "topic": "Earnings",
+          "relevance_score": "0.576289"
+        },
+        {
+          "topic": "Financial Markets",
+          "relevance_score": "0.365926"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "1.0"
+        }
+      ],
+      "overall_sentiment_score": 0.186968,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "OPTGF",
+          "relevance_score": "0.064276",
+          "ticker_sentiment_score": "0.021062",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "BA",
+          "relevance_score": "0.128135",
+          "ticker_sentiment_score": "0.21773",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "TSLA",
+          "relevance_score": "0.773597",
+          "ticker_sentiment_score": "0.354216",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "What's Going On With Rivian Automotive Stock Today? - Rivian Automotive  ( NASDAQ:RIVN ) ",
+      "url": "https://www.benzinga.com/markets/equities/24/10/41526572/whats-going-on-with-rivian-automotive-stock-today",
+      "time_published": "20241024T175348",
+      "authors": [
+        "Nabaparna Bhattacharya"
+      ],
+      "summary": "Yesterday, the company's top peer Tesla, Inc. reported third-quarter revenue of $25.18 billion, up 8% year-over-year, with improving margins. The company reported automotive revenue of $20 billion, up 2% year-over-year, in the third quarter.",
+      "banner_image": "https://cdn.benzinga.com/files/images/story/2024/10/24/Rivian-R1T-truck-Photo-by-Tada-Images-on.jpeg?width=1200&height=800&fit=crop",
+      "source": "Benzinga",
+      "category_within_source": "General",
+      "source_domain": "www.benzinga.com",
+      "topics": [
+        {
+          "topic": "Earnings",
+          "relevance_score": "0.744043"
+        },
+        {
+          "topic": "Financial Markets",
+          "relevance_score": "0.108179"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "1.0"
+        }
+      ],
+      "overall_sentiment_score": 0.508306,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "TSLA",
+          "relevance_score": "0.107016",
+          "ticker_sentiment_score": "0.111096",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    }
+  ]
+}

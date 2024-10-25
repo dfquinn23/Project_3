@@ -1,22 +1,79 @@
 {
   "symbol": "SOFI",
-  "analysis_period": "2024-10-22 to 2024-10-23",
+  "analysis_period": "2024-10-23 to 2024-10-24",
   "stock_performance": {
-    "start_price": 10.579999923706055,
-    "end_price": 10.579999923706055,
+    "start_price": 10.420000076293945,
+    "end_price": 10.420000076293945,
     "percent_change": 0.0
   },
   "sentiment_analysis": {
-    "average_sentiment": 0.25663236000000006,
+    "average_sentiment": 0.26020134000000006,
     "num_headlines": 50
   },
   "financial_metrics": {
-    "daily_high": 10.65,
-    "daily_low": 10.175,
-    "volume": 37657340,
-    "market_cap": 11107094528
+    "daily_high": 11.3,
+    "daily_low": 10.78,
+    "volume": 71513393,
+    "market_cap": 11650723840
   },
   "headlines": [
+    {
+      "title": "Nu Holdings Stock Surges 77% YTD: Is Your FOMO Justified?",
+      "url": "https://www.zacks.com/stock/news/2357193/nu-holdings-stock-surges-77-ytd-is-your-fomo-justified",
+      "time_published": "20241024T182900",
+      "authors": [
+        "Shuvra Shankar Dey"
+      ],
+      "summary": "As NU's stock continues its upward momentum, we assess whether it still presents a viable investment opportunity. Here's what you should consider.",
+      "banner_image": "https://staticx-tuner.zacks.com/images/articles/main/08/371.jpg",
+      "source": "Zacks Commentary",
+      "category_within_source": "n/a",
+      "source_domain": "www.zacks.com",
+      "topics": [
+        {
+          "topic": "Financial Markets",
+          "relevance_score": "0.503496"
+        },
+        {
+          "topic": "Earnings",
+          "relevance_score": "0.576289"
+        },
+        {
+          "topic": "Real Estate & Construction",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Finance",
+          "relevance_score": "0.333333"
+        }
+      ],
+      "overall_sentiment_score": 0.375509,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SAN",
+          "relevance_score": "0.048327",
+          "ticker_sentiment_score": "-0.111945",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "SOFI",
+          "relevance_score": "0.096477",
+          "ticker_sentiment_score": "-0.119054",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "NU",
+          "relevance_score": "0.603832",
+          "ticker_sentiment_score": "0.499095",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
     {
       "title": "1 Digital Banking Stock Down 61% to Buy and Hold Forever",
       "url": "https://www.fool.com/investing/2024/10/19/1-digital-banking-stock-down-61-to-buy-and-hold-fo/",
@@ -196,49 +253,6 @@
           "relevance_score": "0.321673",
           "ticker_sentiment_score": "0.112991",
           "ticker_sentiment_label": "Neutral"
-        }
-      ]
-    },
-    {
-      "title": "IFS or SOFI: Which Is the Better Value Stock Right Now?",
-      "url": "https://www.zacks.com/stock/news/2351640/ifs-or-sofi-which-is-the-better-value-stock-right-now",
-      "time_published": "20241016T154013",
-      "authors": [
-        "Zacks Equity Research"
-      ],
-      "summary": "IFS vs. SOFI: Which Stock Is the Better Value Option?",
-      "banner_image": "https://staticx-tuner.zacks.com/images/default_article_images/default127.jpg",
-      "source": "Zacks Commentary",
-      "category_within_source": "n/a",
-      "source_domain": "www.zacks.com",
-      "topics": [
-        {
-          "topic": "Earnings",
-          "relevance_score": "0.769861"
-        },
-        {
-          "topic": "Real Estate & Construction",
-          "relevance_score": "0.5"
-        },
-        {
-          "topic": "Finance",
-          "relevance_score": "0.5"
-        }
-      ],
-      "overall_sentiment_score": 0.469208,
-      "overall_sentiment_label": "Bullish",
-      "ticker_sentiment": [
-        {
-          "ticker": "SOFI",
-          "relevance_score": "0.608634",
-          "ticker_sentiment_score": "0.5021",
-          "ticker_sentiment_label": "Bullish"
-        },
-        {
-          "ticker": "IFS",
-          "relevance_score": "0.729556",
-          "ticker_sentiment_score": "0.538404",
-          "ticker_sentiment_label": "Bullish"
         }
       ]
     }
