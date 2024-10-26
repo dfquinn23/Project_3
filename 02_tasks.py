@@ -7,7 +7,7 @@ class AgentTasks():
     def search_stock_twits_task(self, agent: Agent, tasks: list[Task]) -> Task:
         return Task(
             description=(
-                f"Search for recent Sentiment and Message Volume on https://stocktwits.com related to the stock {self.ticker}. "
+                "Search for recent Sentiment and Message Volume on https://stocktwits.com related to the stock {ticker}. "
             ),
             agent=agent,
             expeceted_output_type=(
