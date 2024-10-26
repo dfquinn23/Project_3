@@ -1,7 +1,7 @@
 from crewai import Agent, LLM
 from crewai_tools import SerperDevTool, ScrapeWebsiteTool
 from langchain_community.tools.yahoo_finance_news import YahooFinanceNewsTool
-from tools import SentimentAnalysisTool
+from tools import SentimentAnalysisTool, GetTimestampTool
 from langchain_openai import OpenAI
 
 import os
@@ -41,6 +41,7 @@ class AgentSea:
         self.scrape_website_tool = ScrapeWebsiteTool()
         self.yahoo_finance_tool = YahooFinanceNewsTool()
         self.sentiment_analysis_tool = SentimentAnalysisTool()
+        self.get_timestamp_tool = GetTimestampTool()
     
     def create_ticker_finder_agent(self) -> Agent:
         return Agent(
@@ -134,10 +135,11 @@ class AgentSea:
             role="Senior Financial Sentiment Analyst",
             goal=
                 f"""
-                Take the financial news articles and blog posts related {self.company_name}, and run a financial sentiment analysis on them.
+                Take the financial news articles and blog posts related {self.company_name} from the Senior Financial Analyst agent, and run a financial sentiment analysis on them.
                 IMPORTANT:
                 - Only use the tools provided below to complete your task.
                 - Only conduct a sentiment analysis on the financial news articles and blog posts for {self.company_name} frovided by the previous agent.
+                - Don't forget to save the document using a current timestamp!
                 """,
             backstory=
                 """
@@ -166,7 +168,7 @@ class AgentSea:
                 """,
             max_iter=5,
             max_retry_limit=1,
-            tools=[self.sentiment_analysis_tool],
+            tools=[self.sentiment_analysis_tool, self.get_timestamp_tool],
             llm=get_llm(0),
             memory=True,
             verbose=True

@@ -48,8 +48,10 @@ class AgentTasks:
     def get_stock_sentiment_task(self, agent: Agent, tasks: list[Task]):
         return Task(
             description=(
-                    "Conduct a thorough financial sentiment analysis for the FinancialAnalysis[list[financial_analysis]] that the previous agent provided."
-                    "the list of finacial news articls and blog posts should be obtained from the previous agent."
+                    "Conduct a financial sentiment analysis for the FinancialAnalysis[list[financial_analysis]] that the previous agent provided."
+                    "Remember to also get a timestamp for when you save the file."
+                    "Dont forget to use the obtained timestamp in the saved file name."
+                    "example of saved file name:'finacial_analysis{timestamp}.md'\n"
             ),
             agent=agent,
             expected_output=(
@@ -64,7 +66,7 @@ class AgentTasks:
                 "'average_sentiment_score': [float of an average sentimentscore]',\n"
                 "}\n"
             ),
-            output_file="finacial_analysis.md",
+            output_file="output/finacial_analysis{timestamp}.md",
             context=tasks,
             output_json=SentimentAnalysis
         )

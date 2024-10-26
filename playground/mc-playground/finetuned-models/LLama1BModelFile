@@ -1,4 +1,4 @@
-FROM "the path to the LLama 3B model"
+FROM "models/model-L-1B" # this is the file path to the model folder
 
 
 # TEMPLATE """{{ if .System }}<|im_start|>system
