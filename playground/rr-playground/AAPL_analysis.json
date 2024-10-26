@@ -1,0 +1,310 @@
+{
+  "symbol": "AAPL",
+  "analysis_period": "2024-10-22 to 2024-10-23",
+  "stock_performance": {
+    "start_price": 235.86000061035156,
+    "end_price": 235.86000061035156,
+    "percent_change": 0.0
+  },
+  "sentiment_analysis": {
+    "average_sentiment": 0.1937641,
+    "num_headlines": 50
+  },
+  "headlines": [
+    {
+      "title": "Mag 7 Earnings Loom: What Can Investors Expect?",
+      "url": "https://www.zacks.com/commentary/2356376/mag-7-earnings-loom-what-can-investors-expect",
+      "time_published": "20241023T224700",
+      "authors": [
+        "Sheraz Mian"
+      ],
+      "summary": "Without the Mag 7's substantial earnings contribution, Q3 earnings for the remaining S&P 500 index would be modestly in negative territory. Next week, several will reveal their results.",
+      "banner_image": "https://staticx-tuner.zacks.com/images/articles/main/f8/14626.jpg",
+      "source": "Zacks Commentary",
+      "category_within_source": "n/a",
+      "source_domain": "www.zacks.com",
+      "topics": [
+        {
+          "topic": "Retail & Wholesale",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Earnings",
+          "relevance_score": "1.0"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.333333"
+        }
+      ],
+      "overall_sentiment_score": 0.137078,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.176717",
+          "ticker_sentiment_score": "0.061954",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.059341",
+          "ticker_sentiment_score": "-0.086997",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.118354",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AMZN",
+          "relevance_score": "0.176717",
+          "ticker_sentiment_score": "0.061954",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Mag 7 Earnings Loom: What Can Investors Expect?",
+      "url": "https://www.zacks.com/commentary/2356392/mag-7-earnings-loom-what-can-investors-expect",
+      "time_published": "20241023T224500",
+      "authors": [
+        "Sheraz Mian"
+      ],
+      "summary": "Without the Mag 7's substantial earnings contribution, Q3 earnings for the remaining S&P 500 index would be modestly in negative territory. Next week, several will reveal their results.",
+      "banner_image": "https://staticx-tuner.zacks.com/images/articles/main/f8/14626.jpg",
+      "source": "Zacks Commentary",
+      "category_within_source": "n/a",
+      "source_domain": "www.zacks.com",
+      "topics": [
+        {
+          "topic": "Retail & Wholesale",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "0.333333"
+        },
+        {
+          "topic": "Earnings",
+          "relevance_score": "1.0"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.333333"
+        }
+      ],
+      "overall_sentiment_score": 0.137078,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.176717",
+          "ticker_sentiment_score": "0.061954",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.059341",
+          "ticker_sentiment_score": "-0.086997",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.118354",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AMZN",
+          "relevance_score": "0.176717",
+          "ticker_sentiment_score": "0.061954",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Apple, Goldman Sachs Fined $89 Million Over Apple Card Missteps, Government Watchdog Orders Victim Compensation - Goldman Sachs Gr  ( NYSE:GS ) ",
+      "url": "https://www.benzinga.com/government/24/10/41501333/apple-goldman-sachs-fined-89-million-over-apple-card-missteps-government-watchdog-orders-victim-comp",
+      "time_published": "20241023T202607",
+      "authors": [
+        "Aaron Bry"
+      ],
+      "summary": "The Consumer Financial Protection Bureau ( CFPB ) , a government watchdog agency, issued a $89 million fine against Apple Inc AAPL and Goldman Sachs GS due to \"service breakdowns and misrepresentations\" that impacted Apple Card users. The agency claims these missteps affected hundreds of ...",
+      "banner_image": "https://cdn.benzinga.com/files/images/story/2024/10/23/West-Bangal--India---February-20--2023--.jpeg?width=1200&height=800&fit=crop",
+      "source": "Benzinga",
+      "category_within_source": "General",
+      "source_domain": "www.benzinga.com",
+      "topics": [
+        {
+          "topic": "Technology",
+          "relevance_score": "0.5"
+        },
+        {
+          "topic": "Finance",
+          "relevance_score": "0.5"
+        }
+      ],
+      "overall_sentiment_score": -0.00489,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "GS",
+          "relevance_score": "0.53784",
+          "ticker_sentiment_score": "0.128272",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.894261",
+          "ticker_sentiment_score": "-0.155494",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        }
+      ]
+    },
+    {
+      "title": "Can Q3 Earnings Fuel A New Rally In \"Mag 7\" ETFs? - Apple  ( NASDAQ:AAPL ) , Amazon.com  ( NASDAQ:AMZN ) ",
+      "url": "https://www.benzinga.com/trading-ideas/24/10/41495593/can-q3-earnings-fuel-a-new-rally-in-mag-7-etfs",
+      "time_published": "20241023T200227",
+      "authors": [
+        "Zacks"
+      ],
+      "summary": "The third-quarter earnings season is underway, and the so-called \"Magnificent 7\" companies are in focus. The \"Mag 7,\" the stock market darlings in the first half of 2024, lost their steam in recent months due to the fading AI craze and investors' love for the sectors benefiting the most from rate ...",
+      "banner_image": "https://cdn.benzinga.com/files/images/story/2024/10/23/kanchanara-gnwfl_nnzro-unsplash.jpg?width=1200&height=800&fit=crop",
+      "source": "Benzinga",
+      "category_within_source": "General",
+      "source_domain": "www.benzinga.com",
+      "topics": [
+        {
+          "topic": "Retail & Wholesale",
+          "relevance_score": "0.25"
+        },
+        {
+          "topic": "Financial Markets",
+          "relevance_score": "1.0"
+        },
+        {
+          "topic": "Manufacturing",
+          "relevance_score": "0.25"
+        },
+        {
+          "topic": "Earnings",
+          "relevance_score": "1.0"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.25"
+        },
+        {
+          "topic": "Finance",
+          "relevance_score": "0.25"
+        }
+      ],
+      "overall_sentiment_score": 0.214797,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.187775",
+          "ticker_sentiment_score": "0.082605",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "GOOG",
+          "relevance_score": "0.054114",
+          "ticker_sentiment_score": "-0.03585",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "META",
+          "relevance_score": "0.213988",
+          "ticker_sentiment_score": "0.16539",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.081092",
+          "ticker_sentiment_score": "0.0",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.161349",
+          "ticker_sentiment_score": "0.130908",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "TSLA",
+          "relevance_score": "0.161349",
+          "ticker_sentiment_score": "0.033117",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "IVZ",
+          "relevance_score": "0.054114",
+          "ticker_sentiment_score": "0.09076",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AMZN",
+          "relevance_score": "0.187775",
+          "ticker_sentiment_score": "0.108939",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Market Whales and Their Recent Bets on AAPL Options - Apple  ( NASDAQ:AAPL ) ",
+      "url": "https://www.benzinga.com/insights/options/24/10/41499792/market-whales-and-their-recent-bets-on-aapl-options",
+      "time_published": "20241023T194531",
+      "authors": [
+        "Benzinga Insights"
+      ],
+      "summary": "Whales with a lot of money to spend have taken a noticeably bearish stance on Apple. Looking at options history for Apple AAPL we detected 224 trades. If we consider the specifics of each trade, it is accurate to state that 37% of the investors opened trades with bullish expectations and 49% ...",
+      "banner_image": "https://www.benzinga.com/files/images/story/2024/1729712728_0.png",
+      "source": "Benzinga",
+      "category_within_source": "Markets",
+      "source_domain": "www.benzinga.com",
+      "topics": [
+        {
+          "topic": "Financial Markets",
+          "relevance_score": "0.977154"
+        },
+        {
+          "topic": "Earnings",
+          "relevance_score": "0.310843"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.5"
+        },
+        {
+          "topic": "Finance",
+          "relevance_score": "0.5"
+        }
+      ],
+      "overall_sentiment_score": 0.097205,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.693563",
+          "ticker_sentiment_score": "0.071763",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "BCS",
+          "relevance_score": "0.067919",
+          "ticker_sentiment_score": "-0.075501",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    }
+  ]
+}
