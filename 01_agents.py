@@ -6,7 +6,7 @@ class AgentSea():
         print(f"The Sea of Agents is initializing...")
         print(f"please wait.")
 
-        self.llm = LLM(model='ollama/crewai-llama3:latest') # add url?
+        self.llm = LLM(model='ollama/crewai-llama3:latest')
 
     def stock_twits_agent(self, ticker: str) -> Agent:
         return Agent(

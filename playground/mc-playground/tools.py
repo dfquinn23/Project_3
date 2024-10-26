@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 from typing import List, Type
 
 
-llm = OllamaLLM(model="Llama-3.2-3B-Instruct-LoRa-mqc-Sentiment_Analysis:0.77", temperature=0.95)
+llm = OllamaLLM(model="mattarad/llama3.2-1b-instruct-mqc-sa", temperature=0.25)
 # llm = Ollama(model="Llama-3.2-3B-Instruct-LoRa-mqc-Sentiment_Analysis:0.77", temperature=0.9)
 
 
