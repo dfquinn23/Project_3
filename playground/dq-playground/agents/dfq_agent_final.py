@@ -6,10 +6,9 @@ scrape_tool = ScrapeWebsiteTool()
 """
 Purpose:
     1. Our agents will be tasked with performing sentiment analysis of user-inputted stocks over a spoecific date range
-    2. Agent 1 is the Ticker Agent responsible for taking comanmy name and returning the ticker
-    3. Agent 2 is our Researcher. He will take the ticker from Chatbot and conduct a search for for recent articles, blog posts, social meadia mentions headlines.
-    4. Agent 3 is the Analyst, who is tasked with creating the sentiment analysis report
-    4. Agent 4 is the Sentiment Analyst
+    2. Agent 1 is the ChatBot responsible for interfacing with the user and obtaining the search data
+    3. Agent 2 is our Researchbot. He will take the ticker and date range from Chatbot and conduct a search for for recent articles, blog posts, social meadia mentions headlines.
+    4. Agent 3 is the Writerbot, who is tasked with creating the sentiment analysis report
 
 """
 
@@ -17,25 +16,25 @@ class Sentiment_Agents:
     def __init__(self):
         self.manager_llm = LLM(model="ollama/mattarad/llama3.2-3b-instruct-mqc-sa", temperature=0.3)
         
-    def ticker_agent(self):
+    def chatbot_agent(self):
         return Agent(
-            role = "Ticker Agent",
+            role = "chatbot",
             goal =
                 """
-                1. Take the user's input, which will be either a company name or stock ticker, as well as the date range for which they want to search.
+                1. Take the user's input, which will be either a company name or stock ticker, as well as the date range they want to search for.
                 """,
                 backstory=
                 """
                 1. You work in the front lines of customer service.
                 2. Our customers come to you when they want to obtain our company's sentiment analysis for various stocks over a specific date range.
-                3. You pride yourself on being fast, courteous, and accurate.
+                3. You pride yourself on being fast, courteous, and accurate
                 """,
             verbose=True,
             allow_delegation=True,
             memory=True
           )
 
-    def research_agent(self):
+    def Researchbot_agent(self):
         return Agent(
             role = "Researcher",
             goal =
@@ -58,9 +57,9 @@ class Sentiment_Agents:
             tools = [search_tool, scrape_tool]
 )
 
-    def analyst_agent(self):
+    def Writerbot_agent(self):
         return Agent(
-            role="Analyst",
+            role="Report Writer",
             backstory=
                 """"
                 1. You are a highly experienced writer with specialization in creating investment research reports
@@ -76,22 +75,3 @@ class Sentiment_Agents:
             verbose=True,
             manager_llm = manager_llm
         )
-
-def sentiment_agent(self):
-        return Agent(
-            role="Sentiment Analyst",
-            backstory=
-                """"
-                1. 
-                2. 
-                3. 
-                """,
-            goal="""
-                1. 
-                2. 
-                3. 
-            """,
-            verbose=True,
-            manager_llm = manager_llm
-
-
