@@ -1,5 +1,5 @@
 # Import required libraries
-from crewai import Crew
+from crewai import Crew, Process
 from langchain_openai import OpenAI
 from dotenv import load_dotenv
 import os
@@ -37,6 +37,7 @@ crew = Crew(
     agents=agents,
     tasks=tasks,
     verbose=True,
+    process=Process.sequential,
     max_iterations=5  # Increase this value if needed
 )
 

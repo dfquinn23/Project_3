@@ -27,8 +27,8 @@ class StockAnalyzer:
         
         logging.info(f"Fetching news headlines for {self.symbol}")
         try:
-            r = requests.get(url, timeout=10)  # Add a timeout
-            r.raise_for_status()  # Raise an exception for bad status codes
+            r = requests.get(url, timeout=10)  # Add a timeout here to make sure it is all right...
+            r.raise_for_status()  # Raise an exception for bad status codes lol
             data = r.json()
             
             if 'feed' in data:
