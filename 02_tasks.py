@@ -1,18 +1,41 @@
 from crewai import Agent, Task
+# from models import CompanyInfo, FinancialAnalysis, SentimentAnalysis
 
-class AgentTasks():
-    def __init__(self, ticker: str):
-        self.ticker = ticker
+class AgentTasks:
+    def __init__(self, company_name) -> None:
+        self.company_name = company_name
+        self.timestamp = None
     
-    def search_stock_twits_task(self, agent: Agent, tasks: list[Task]) -> Task:
+    def get_stock_ticker_task(self, agent: Agent):
         return Task(
             description=(
-                "Search for recent Sentiment and Message Volume on https://stocktwits.com related to the stock {ticker}. "
             ),
             agent=agent,
-            expeceted_output_type=(
-                "A JSON object containing the Sentiment Message Volume and timestamp for the ticker symbol."
+            expected_output=(
+            ),
+            output_json=CompanyInfo
+        )
+    
+
+    def get_stock_information_task(self, agent: Agent, tasks: list[Task]):
+        return Task(
+            description=(
+            ),
+            agent=agent,
+            expected_output=(
             ),
             context=tasks,
-            # output_json=StockTwitsOutput
+            output_pydantic="FinancialAnalysis"
+        )
+
+    def get_stock_sentiment_task(self, agent: Agent, tasks: list[Task]):
+        return Task(
+            description=(
+            ),
+            agent=agent,
+            expected_output=(
+            ),
+            output_file=f"output/finacial_analysis{self.timestamp}.md",
+            context=tasks,
+            output_json=SentimentAnalysis
         )

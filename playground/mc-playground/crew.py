@@ -12,11 +12,14 @@ class CompanyResearchCrew:
         print(f"Setting up crew for: {self.company_name}")
         agents = AgentSea(self.company_name)
         ticker_agent = agents.create_ticker_finder_agent()
+
         financial_agent = agents.financial_analyst_agent()
         sentiment_agent = agents.sentiment_analyst_agent()
         
         tasks = AgentTasks(self.company_name)
         task_01 = tasks.get_stock_ticker_task(ticker_agent)
+
+
         task_02 = tasks.get_stock_information_task(financial_agent, [task_01])
         task_03 = tasks.get_stock_sentiment_task(sentiment_agent, [task_01, task_02])
 

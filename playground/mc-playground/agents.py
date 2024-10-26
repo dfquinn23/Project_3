@@ -47,7 +47,7 @@ class AgentSea:
         return Agent(
             role="Senior Online Researcher",
             goal=
-                f"""
+                """
                 Conduct an amazing online search to find the stock ticker for {self.company_name}.
                 IMPORTANT:
                 - If you cannot find the result, return "Ticker not found".
@@ -58,8 +58,10 @@ class AgentSea:
                 """
                 You are a Senior Online Researcher that specializes in finding a company's stock market ticker symbol with only the company name.
                 """,
-            agent_prompt = f"""
-                You are an AI Senior Online Researcher agent tasked with searching the web to find the stock market ticker symbol for the {self.company_name}.
+            agent_prompt = 
+                """
+                You are an AI Senior Online Researcher agent tasked with searching the web to find the
+                 stock market ticker symbol for the {self.company_name}.
                 
                 Follow these steps:
 
@@ -90,10 +92,11 @@ class AgentSea:
         return Agent(
             role="Senior Financial Analyst",
             goal=
-                f"""
-                Conduct an amazing online search to find the financial information on ticker for {self.company_name}.
+                """
+                Conduct a thorough search to find the ten most recent financial news articles and blog posts related to the {self.company_name}.\n
+                Analyze the articles and blog posts found and provide a comprehensive report on the stock market performance of the {self.company_name}.\n
+                If you need more information, use the tools that you have to find more financial information on the {self.company_name}.
                 IMPORTANT:
-                - If you cannot find the result, return "Information not found".
                 - Do not include any unnecessary words or phrases in your response and only provide a detailed financial analysis on the ticker for {self.company_name}.
                 """,
             backstory=
@@ -119,7 +122,8 @@ class AgentSea:
                 - Always start with a Thought.
                 - Provide your final answer in the specified format.
                 - If you cannot find an answer, do not make one up. Instead, return "Information not found".
-                - You are to pass the most recent 10 headlines to the next agent for sentiment analysis
+                - You are to pass the headlines you recieved from the previous agent to the next agent for a financial sentiment analysis
+                - you are also to pass you analysis to the next agent to add to the report.
                 """,
             max_iter=5,
             max_retry_limit=1,
@@ -134,10 +138,11 @@ class AgentSea:
         return Agent(
             role="Senior Financial Sentiment Analyst",
             goal=
-                f"""
-                Take the financial news articles and blog posts related {self.company_name} from the Senior Financial Analyst agent, and run a financial sentiment analysis on them.
+                """
+                Take the financial news articles and blog posts related {self.company_name} from the Senior Financial Analyst agent, and using the correct tool, run a sentiment analysis on them.
                 IMPORTANT:
                 - Only use the tools provided below to complete your task.
+                - Only use a tool to run the sentitment analysis.
                 - Only conduct a sentiment analysis on the financial news articles and blog posts for {self.company_name} frovided by the previous agent.
                 - Don't forget to save the document using a current timestamp!
                 """,
@@ -146,7 +151,7 @@ class AgentSea:
                 You are a Senior Financial Sentiment Analyst that specializes in conducting the most informative financial sentiment analysis on a specific company and applying
                 the most cutting-edge, up-to-date, and accurate sentiment analysis on the company's financial news and blog posts provided by the previous agent.
                 """,
-            agent_prompt = f"""
+            agent_prompt = """
                 You are an AI Senior Sentiment Analyst agent tasked with searching the web to find the most relavant financial news and blog posts on the stock market ticker symbol for the specified company name.
                 
                 Follow these steps:
@@ -164,7 +169,7 @@ class AgentSea:
                 - Always start with a Thought.
                 - Provide your final answer in the specified format.
                 - If you cannot find an answer, do not make one up. Instead, return "Information not found".
-                - When you have recieved the list of related news artices and blog posts from the previous agent, run them through the sentiment analysis tool to get the overall sentiment of each article.
+                - When you have recieved the list of related news articles and blog posts from the previous agent, run them through the sentiment analysis tool to get the overall sentiment of each article.
                 """,
             max_iter=5,
             max_retry_limit=1,
