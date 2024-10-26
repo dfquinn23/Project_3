@@ -1,12 +1,20 @@
+from datetime import datetime, timezone
 from langchain_ollama.llms import OllamaLLM
 # from langchain_community.llms.ollama import Ollama
 from crewai_tools import BaseTool
 from pydantic import BaseModel, Field
 from typing import List, Type
 
-
+# 1B model
 llm = OllamaLLM(model="mattarad/llama3.2-1b-instruct-mqc-sa", temperature=0.25)
-# llm = Ollama(model="Llama-3.2-3B-Instruct-LoRa-mqc-Sentiment_Analysis:0.77", temperature=0.9)
+# 3B model
+# llm = OllamaLLM(model="mattarad/llama3.2-3b-instruct-mqc-sa", temperature=0.25)
+
+# newer version of langchain_community
+# 1B model
+# llm = Ollama(model="mattarad/llama3.2-1b-instruct-mqc-sa", temperature=0.25)
+# 3B model
+# llm = Ollama(model="mattarad/llama3.2-3b-instruct-mqc-sa", temperature=0.25)
 
 
 class SentementAnalysisToolInput(BaseModel):
@@ -37,7 +45,13 @@ class SentimentAnalysisTool(BaseTool):
         print(result)
         return result
 
+class TimestampOutput(BaseModel):
+    timemstamp: str
 
-# def get_llm() -> LLM:
-#     return LLM(model="Llama-3.2-3B-Instruct-LoRa-mqc-Sentiment_Analysis:0.77", temperature=0.5)
-# call_sentiment_slm("where is the taco stand?")
+class GetTimestampTool(BaseTool):
+    name: str = "Get Timestamp Tool"
+    description: str = "This tool is used to obtain a timestamp"
+
+    def _run(self) -> TimestampOutput:
+        
+        return str(datetime.timestamp())
