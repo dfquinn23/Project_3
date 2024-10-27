@@ -79,19 +79,22 @@ class Sentiment_Agents:
 
 def sentiment_agent(self):
         return Agent(
-            role="Sentiment Analyst",
+            role="Senior Financial Sentiment Analyst",
             backstory=
                 """"
-                1. 
-                2. 
-                3. 
+                1. You are a Senior Financial Sentiment Analyst\n
+                2. You specialize in conducting an informative financial sentiment analysis on a specific company
+                3. .
                 """,
             goal="""
-                1. 
-                2. 
-                3. 
+                1. Take the financial news articles and blog posts related to {self.company_name} from the previous agent.
+                2. Run a financial sentiment analysis on the articles and blog posts provided by the previous agent.
+                3. Get the current timestamp.
+                IMPORTANT:
+                - Only use the tools provided below to complete your task.
+                - Only conduct a sentiment analysis on the financial news articles and blog posts for {self.company_name} frovided by the previous agent.
+                - Don't forget to save the document using a current timestamp!
             """,
             verbose=True,
-            manager_llm = manager_llm
-
-
+            llm = LLM(model="ollama/llama3:latest", temperature=0.3)
+        )
