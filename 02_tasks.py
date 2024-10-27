@@ -41,10 +41,9 @@ class AgentTasks:
     def get_sentiment_task(self, agent: Agent, tasks: list[Task]):
         return Task(
             description=(
-                    "Conduct a financial sentiment analysis for the FinancialAnalysis[list[financial_analysis]] that the previous agent provided."
+                    "Conduct a financial sentiment analysis for all of the articles and blog posts that the previous agent provided."
                     "Remember to also get a timestamp for when you save the file."
                     "Dont forget to use the obtained timestamp in the saved file name."
-                    "example of saved file name:'finacial_analysis{timestamp}.md'\n"
             ),
             agent=agent,
             expected_output=(

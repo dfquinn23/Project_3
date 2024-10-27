@@ -88,7 +88,7 @@ class StockAnalyzer:
 
 
 # 1B model
-sa_llm = OllamaLLM(model="mattarad/llama3.2-1b-instruct-mqc-sa", temperature=0.25)
+sa_llm = OllamaLLM(model="mattarad/llama3.2-3b-instruct-mqc-sa", temperature=0.25)
 
 
 class GetTimestampTool(BaseTool):

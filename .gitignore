@@ -8,10 +8,9 @@ __pycache__/
 
 # C extensions
 *.so
-
-/playground/mc-playground/finetuned-llamas/models/lora_model
-/playground/mc-playground/finetuned-llamas/models/model-L-1B
-/playground/mc-playground/finetuned-llamas/models/model-L-3B
+/playground/mc-playground/finetuned-models/models/lora_model
+/playground/mc-playground/finetuned-models/models/model-L-1B
+/playground/mc-playground/finetuned-models/models/model-L-3B
 # Distribution / packaging
 .Python
 build/
