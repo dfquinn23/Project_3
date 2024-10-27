@@ -1,4 +1,4 @@
-FROM "models/model-L-1B" # this is the file path to the model folder
+FROM "<path to your model>"
 
 
 # TEMPLATE """{{ if .System }}<|im_start|>system
@@ -27,4 +27,4 @@ SYSTEM """You are an advanced AI assistant created to perform sentiment analysis
         Stop generating any response immediately after returning the JSON object.
         You must NOT generate any additional content, and you must NOT continue the conversation.
         End the output immediately after the JSON response. 
-        """
+"""

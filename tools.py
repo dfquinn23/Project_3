@@ -1,10 +1,17 @@
 import yfinance as yf
 import pandas as pd
 import requests
-from typing import List, Dict
+from typing import List, Dict, Type
 import os
 from datetime import datetime, timedelta
 import json
+
+from langchain_ollama.llms import OllamaLLM
+from crewai_tools import BaseTool
+from pydantic import BaseModel, Field
+
+from models import TimestampOutput, SentementAnalysisToolInput, SentementAnalysisToolOutput
+
 
 class StockAnalyzer:
     def __init__(self, symbol: str, days: int = 30):
@@ -78,3 +85,33 @@ class StockAnalyzer:
             json.dump(analysis_result, f, indent=2)
         
         print(f"Analysis for {self.symbol} has been saved to {self.symbol}_analysis.json")
+
+
+# 1B model
+sa_llm = OllamaLLM(model="mattarad/llama3.2-3b-instruct-mqc-sa", temperature=0.25)
+
+
+class GetTimestampTool(BaseTool):
+    name: str = "Get Timestamp Tool"
+    description: str = "This tool is used to obtain a timestamp"
+
+    def _run(self) -> TimestampOutput:
+        
+        return str(datetime.timestamp())
+
+class SentimentAnalysisTool(BaseTool):
+    name: str = "Sentiment Analysis Tool"
+    description: str = "This tool analyzes the sentiment of a given text and returns the a SentementAnalysisToolOutput."
+    args_schema: Type[BaseModel] = SentementAnalysisToolInput
+
+    def _run(self, input_data: SentementAnalysisToolInput) -> SentementAnalysisToolOutput:
+        self.call_sentiment_slm(input_data.text)
+
+    def call_sentiment_slm(text: str) -> SentementAnalysisToolOutput:
+        result = sa_llm.invoke(text)
+        print(result)
+        return result
+
+
+
+

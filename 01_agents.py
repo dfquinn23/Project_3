@@ -21,42 +21,50 @@ class Sentiment_Agents:
         return Agent(
             role = "Ticker Agent",
             goal =
-                """
-                1. Take the user's input, which will be either a company name or stock ticker, as well as the date range for which they want to search.
-                """,
-                backstory=
+                "Return a company's stock ticker accurately.",
+            backstory=
                 """
                 1. You work in the front lines of customer service.
-                2. Our customers come to you when they want to obtain our company's sentiment analysis for various stocks over a specific date range.
+                2. Our customers come to you when they want to obtain our company's sentiment analysis for stocks over a specific date range.
                 3. You pride yourself on being fast, courteous, and accurate.
                 """,
             verbose=True,
+            tools=[search_tool],
             allow_delegation=True,
             memory=True
           )
 
     def research_agent(self):
         return Agent(
-            role = "Researcher",
-            goal =
-            """
-                1. Receive the input data from the Chatbot_agent.
-                2. Conduct a "sentiment analysis" search for the ticker and date range information received from the chatbot_agent.
-                3. Pass your findings off to the writer_agent
-            """,
+            role="News Article Researcher",
+            goal=
+                """
+                1.  Receive the stock ticker symbol from the Ticker Agent.
+                2.  Search for recent news articles about the ticker symbol using 
+                    financial news websites and social media platforms, focusing 
+                    on identifying headlines or summaries that have been published 
+                    within the last 24 hours. Target sources include reputable 
+                    news organizations, such as Bloomberg, CNBC, or Reuters.
+                3.  Refine search results by excluding articles from sources 
+                    known for biased reporting or lack of objectivity.
+                4.  Expected delivery to Sentiment Analyst Agent: A list of up 
+                    to 10 relevant news article summaries.
+                """,
             backstory=
-            """
-                1. You have many years of experience conducting investment research.
-                2. Your area of expertise is in conducting sentiment analysis.
-                3. Your research sources include social media, news outlets, forums and blogs, and company communications.
-                4. You pride yourself on being thorough, detailed, accurate, and comprehensive
-                5. Do not make any assumptions or provide any information that cannot be independently verified.
-            """,
+                """
+                1.  You are trained on a vast dataset of news articles from 
+                    reputable sources, including financial news websites and 
+                    social media platforms.
+                2.  Your expertise lies in searching and analyzing market data 
+                    to identify relevant news articles using techniques to 
+                    evaluate the credibility of news articles.
+                3.  You prioritize accuracy and reliability in your research.
+                """,
             verbose=True,
+            tools=[search_tool, scrape_tool],
             allow_delegation=True,
-            memory=True,
-            tools = [search_tool, scrape_tool]
-)
+            memory=True
+        )
 
     def analyst_agent(self):
         return Agent(
@@ -79,19 +87,22 @@ class Sentiment_Agents:
 
 def sentiment_agent(self):
         return Agent(
-            role="Sentiment Analyst",
+            role="Senior Financial Sentiment Analyst",
             backstory=
                 """"
-                1. 
-                2. 
-                3. 
+                1. You are a Senior Financial Sentiment Analyst\n
+                2. You specialize in conducting an informative financial sentiment analysis on a specific company
+                3. .
                 """,
             goal="""
-                1. 
-                2. 
-                3. 
+                1. Take the financial news articles and blog posts related to {self.company_name} from the previous agent.
+                2. Run a financial sentiment analysis on the articles and blog posts provided by the previous agent.
+                3. Get the current timestamp.
+                IMPORTANT:
+                - Only use the tools provided below to complete your task.
+                - Only conduct a sentiment analysis on the financial news articles and blog posts for {self.company_name} frovided by the previous agent.
+                - Don't forget to save the document using a current timestamp!
             """,
             verbose=True,
-            manager_llm = manager_llm
-
-
+            llm = LLM(model="ollama/llama3:latest", temperature=0.3)
+        )
