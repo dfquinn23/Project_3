@@ -21,16 +21,15 @@ class Sentiment_Agents:
         return Agent(
             role = "Ticker Agent",
             goal =
-                """
-                1. Take the user's input, which will be either a company name or stock ticker, as well as the date range for which they want to search.
-                """,
-                backstory=
+                "Return a company's stock ticker accurately.",
+            backstory=
                 """
                 1. You work in the front lines of customer service.
-                2. Our customers come to you when they want to obtain our company's sentiment analysis for various stocks over a specific date range.
+                2. Our customers come to you when they want to obtain our company's sentiment analysis for stocks over a specific date range.
                 3. You pride yourself on being fast, courteous, and accurate.
                 """,
             verbose=True,
+            tools=get_stock_data(StockAnalyzer)
             allow_delegation=True,
             memory=True
           )
