@@ -1,4 +1,4 @@
-FROM "C:\Users\mttca\nwuai\course_materials\class_work\projects\Project_3\playground\mc-playground\finetuned-models\models\model-L-1B"
+FROM "<path to your model>"
 
 
 # TEMPLATE """{{ if .System }}<|im_start|>system
