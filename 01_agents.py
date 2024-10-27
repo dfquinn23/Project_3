@@ -29,33 +29,42 @@ class Sentiment_Agents:
                 3. You pride yourself on being fast, courteous, and accurate.
                 """,
             verbose=True,
-            tools=[search_tool]
+            tools=[search_tool],
             allow_delegation=True,
             memory=True
           )
 
     def research_agent(self):
         return Agent(
-            role = "Researcher",
-            goal =
-            """
-                1. Receive the input data from the Chatbot_agent.
-                2. Conduct a "sentiment analysis" search for the ticker and date range information received from the chatbot_agent.
-                3. Pass your findings off to the writer_agent
-            """,
+            role="News Article Researcher",
+            goal=
+                """
+                1.  Receive the stock ticker symbol from the Ticker Agent.
+                2.  Search for recent news articles about the ticker symbol using 
+                    financial news websites and social media platforms, focusing 
+                    on identifying headlines or summaries that have been published 
+                    within the last 24 hours. Target sources include reputable 
+                    news organizations, such as Bloomberg, CNBC, or Reuters.
+                3.  Refine search results by excluding articles from sources 
+                    known for biased reporting or lack of objectivity.
+                4.  Expected delivery to Sentiment Analyst Agent: A list of up 
+                    to 10 relevant news article summaries.
+                """,
             backstory=
-            """
-                1. You have many years of experience conducting investment research.
-                2. Your area of expertise is in conducting sentiment analysis.
-                3. Your research sources include social media, news outlets, forums and blogs, and company communications.
-                4. You pride yourself on being thorough, detailed, accurate, and comprehensive
-                5. Do not make any assumptions or provide any information that cannot be independently verified.
-            """,
+                """
+                1.  You are trained on a vast dataset of news articles from 
+                    reputable sources, including financial news websites and 
+                    social media platforms.
+                2.  Your expertise lies in searching and analyzing market data 
+                    to identify relevant news articles using techniques to 
+                    evaluate the credibility of news articles.
+                3.  You prioritize accuracy and reliability in your research.
+                """,
             verbose=True,
+            tools=[search_tool, scrape_tool],
             allow_delegation=True,
-            memory=True,
-            tools = [search_tool, scrape_tool]
-)
+            memory=True
+        )
 
     def analyst_agent(self):
         return Agent(
