@@ -29,7 +29,7 @@ class Sentiment_Agents:
                 3. You pride yourself on being fast, courteous, and accurate.
                 """,
             verbose=True,
-            tools=get_stock_data(StockAnalyzer)
+            tools=[search_tool]
             allow_delegation=True,
             memory=True
           )
