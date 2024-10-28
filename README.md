@@ -40,7 +40,7 @@ Our model is comprised of 4 agents, each tasked with a distinct job:
 - The ticker_agent conducts the initial online search for the ticker and returns it to the research_agent
 - The research_agent conducts the online research, gathering news from a variety of publicly-available sources, then returns the research to the analyst_agent
 - The analyst_agent then takes the research and writes the research report, using the trained Llama LLM as its "brain," with the final product then sent to the sentiment_agent
-- The sentiment_agent then takes the research report and runs a financial sentiment analysis and provides a score, with a current timestamp.
+- The sentiment_agent also takes the data from the research_agent runs a financial sentiment analysis and provides a score, with a current timestamp.
 
 ## Tool Overview
 Per the project requirements, our effort leveraged the following required tools:
