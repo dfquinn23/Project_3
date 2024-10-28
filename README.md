@@ -16,26 +16,31 @@ Our group was interested in exploring the use of agents to solve a multi-step pr
 3. Apply these lessons to a real-world use case that can be further enhanced and developed beyond the conclusion of the course.
 
 ## Project Structure
--Project concept was agreed upon by all team members after thorough deliberation
+- Project concept was agreed upon by all team members after thorough deliberation
 
--In the initial stages, each team member was allowed to explore and learn as much about the tools as possible, and begin creating crews of agents, tasks, and tools independently. In addition to these general tasks:
+- In the initial stages, each team member was allowed to explore and learn as much about the tools as possible, and begin creating crews of agents, tasks, and tools independently. In addition to these general tasks:
+        
         -Matt trained and tested 2 Llama LLms, one of which was ultimately used for the creation of the research reports (see "Notes on the LLM Models" below)
+
         -Roberto coded the application, as well as built out a draft user interface using Streamlit
+
         -David coded several new Classes that were ultimately edited and used in the final project
+
         -Dan coded several agent iterations that were ultimately absorbed into the final product
 
--In the second stage, the team reassembled several times and engaged in detailed discussions about what we wanted to agents to accomplish and what were the most efficient way to approach the task. The process of creating the agent framework and the underlying tools and models was a highly collaborative one.
+- In the second stage, the team reassembled several times and engaged in detailed discussions about what we wanted to agents to accomplish and what were the most efficient way to approach the task. The process of creating the agent framework and the underlying tools and models was a highly collaborative one.
 
--In the final stage, the final model was tested and retest several times with additional fine-tuning as needed until the reports generated produced realistic, defensible output.
+- In the final stage, the final model was tested and retest several times with additional fine-tuning as needed until the reports generated produced realistic, defensible output.
 
 
 ## Model Overview
 
 Our model is comprised of 4 agents, each tasked with a distinct job:
--The ticker_agent conducts the initial online search for the ticker and returns it to the research_agent
--The research_agent conducts the online research, gathering news from a variety of publicly-available sources, then returns the research to the analyst_agent
--The analyst_agent then takes the research and writes the research report, using the trained Llama LLM as its "brain," with the final product then sent to the sentiment_agent
--The sentiment_agent then takes the research report and runs a financial sentiment analysis and provides a score, with a current timestamp.
+
+- The ticker_agent conducts the initial online search for the ticker and returns it to the research_agent
+- The research_agent conducts the online research, gathering news from a variety of publicly-available sources, then returns the research to the analyst_agent
+- The analyst_agent then takes the research and writes the research report, using the trained Llama LLM as its "brain," with the final product then sent to the sentiment_agent
+- The sentiment_agent then takes the research report and runs a financial sentiment analysis and provides a score, with a current timestamp.
 
 ## Tool Overview
 Per the project requirements, our effort leveraged the following required tools:
