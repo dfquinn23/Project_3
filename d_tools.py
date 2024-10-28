@@ -11,7 +11,6 @@ from crewai_tools import BaseTool
 from pydantic import BaseModel, Field
 
 from models import SentimentAnalysisToolInput, SentimentAnalysisToolOutput
-# Ensure these classes are defined in models.py
 
 
 class StockAnalyzer:
@@ -43,6 +42,15 @@ class StockAnalyzer:
 
     def analyze_stock_performance(self, input_dict=None) -> Dict:
         stock_data = self.get_stock_data()
+        
+        if stock_data.empty:
+            return {
+                'start_price': None,
+                'end_price': None,
+                'percent_change': None,
+                'error': 'No stock data available for the given period.'
+            }
+        
         return {
             'start_price': stock_data['Close'].iloc[0],
             'end_price': stock_data['Close'].iloc[-1],
@@ -78,11 +86,13 @@ class StockAnalyzer:
 
     def generate_json_output(self) -> None:
         analysis_result = self.analyze_sentiment()
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        file_path = f'output/financial_analysis_{self.symbol}_{timestamp}.json'
         
-        with open(f'{self.symbol}_analysis.json', 'w') as f:
+        with open(file_path, 'w') as f:
             json.dump(analysis_result, f, indent=2)
         
-        print(f"Analysis for {self.symbol} has been saved to {self.symbol}_analysis.json")
+        print(f"Analysis for {self.symbol} has been saved to {file_path}")
 
 
 # 3B model
