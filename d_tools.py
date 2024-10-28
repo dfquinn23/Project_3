@@ -10,7 +10,7 @@ from langchain_ollama.llms import OllamaLLM
 from crewai_tools import BaseTool
 from pydantic import BaseModel, Field
 
-from models import TimestampOutput, SentementAnalysisToolInput, SentementAnalysisToolOutput
+from models import SentementAnalysisToolInput, SentementAnalysisToolOutput
 
 
 class StockAnalyzer:
@@ -87,7 +87,7 @@ class StockAnalyzer:
         print(f"Analysis for {self.symbol} has been saved to {self.symbol}_analysis.json")
 
 
-# 1B model
+# 3B model
 sa_llm = OllamaLLM(model="mattarad/llama3.2-3b-instruct-mqc-sa", temperature=0.25)
 
 
@@ -95,8 +95,7 @@ class GetTimestampTool(BaseTool):
     name: str = "Get Timestamp Tool"
     description: str = "This tool is used to obtain a timestamp"
 
-    def _run(self) -> TimestampOutput:
-        
+    def _run(self) -> str:
         return str(datetime.timestamp())
 
 class SentimentAnalysisTool(BaseTool):
@@ -105,12 +104,7 @@ class SentimentAnalysisTool(BaseTool):
     args_schema: Type[BaseModel] = SentementAnalysisToolInput
 
     def _run(self, input_data: SentementAnalysisToolInput) -> SentementAnalysisToolOutput:
-        self.call_sentiment_slm(input_data.text)
-
-    def call_sentiment_slm(text: str) -> SentementAnalysisToolOutput:
-        result = sa_llm.invoke(text)
-        print(result)
-        return result
+        return sa_llm.invoke(input_data.text)
 
 
 
