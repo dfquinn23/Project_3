@@ -22,9 +22,9 @@ class CompanyResearchCrew:
         task_03 = tasks.get_analysis_task(analyst_agent, [task_01, task_02])
         task_04 = tasks.get_sentiment_task(sentiment_agent, [task_01, task_02, task_03])
 
+        # Ensure that the Crew class is initialized correctly
         self.crew = Crew(
-            agents=[ticker_agent, research_agent, analyst_agent, sentiment_agent],
-            tasks=[task_01, task_02, task_03, task_04],
+            tasks=[task_01, task_02, task_03, task_04],  # Ensure these are Task objects
             process=Process.sequential,
             verbose=True
         )
