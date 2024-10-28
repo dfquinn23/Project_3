@@ -8,10 +8,16 @@ class AgentTasks:
     def get_stock_ticker_task(self, agent: Agent):
         return Task(
             description=(
+                """
+                1. This task will enable the ticker_agent to take a company name provided by a user input
+                2. Then the ticket_agent will utilize the search_tool to go onluine and identify the stock tickler associated with that company
+                3. The ticker_)agent will then return the stock ticker and pass it to the research_agent to reserach sentiment surrounding the stock
+                """,
             ),
             agent=agent,
             expected_output=(
-
+                "The ticker_agent will return the stock {ticker} symbol for the requested company"
+                "to pass to the research_agent"
             ),
             output_pydantic=CompanyInfo
         )
