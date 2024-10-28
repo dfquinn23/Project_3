@@ -1,10 +1,10 @@
 import streamlit as st
-from a_agents import ResearchAgents  # Ensure this import is correct
+from a_agents import AgentSea  # Correct the import path based on the actual location of AgentSea
 from tools.visualization import SmartVestVisualizer
 
 class SmartVestWeb:
     def __init__(self, company):
-        self.agent_sea = ResearchAgents(company)  # Pass the company argument
+        self.agent_sea = AgentSea(company)  # Pass the company argument
         self.visualizer = SmartVestVisualizer()
 
     def initialize_session_state(self):

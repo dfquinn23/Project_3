@@ -10,7 +10,8 @@ from langchain_ollama.llms import OllamaLLM
 from crewai_tools import BaseTool
 from pydantic import BaseModel, Field
 
-from models import SentementAnalysisToolInput, SentementAnalysisToolOutput
+from models import SentimentAnalysisToolInput, SentimentAnalysisToolOutput
+# Ensure these classes are defined in models.py
 
 
 class StockAnalyzer:
@@ -25,15 +26,12 @@ class StockAnalyzer:
         df = stock.history(start=self.start_date.strftime('%Y-%m-%d'), end=self.end_date.strftime('%Y-%m-%d'))
         return df
 
-    # def get_news_headlines(self, input_dict=None) -> List[Dict]:
-    #     api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
-    #     url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={self.symbol}&apikey={api_key}'
+    def get_news_headlines(self, input_dict=None) -> List[Dict]:
+        stock = yf.Ticker(self.symbol)
+        news = stock.news
         
-    #     r = requests.get(url)
-    #     data = r.json()
-        
-        if 'feed' in data:
-            return data['feed']
+        if news:
+            return news
         return []
 
     def analyze_headlines_sentiment(self, headlines: List[Dict]) -> Dict:
@@ -96,16 +94,13 @@ class GetTimestampTool(BaseTool):
     description: str = "This tool is used to obtain a timestamp"
 
     def _run(self) -> str:
-        return str(datetime.timestamp())
+        return str(datetime.now().timestamp())
 
 class SentimentAnalysisTool(BaseTool):
     name: str = "Sentiment Analysis Tool"
-    description: str = "This tool analyzes the sentiment of a given text and returns the a SentementAnalysisToolOutput."
-    args_schema: Type[BaseModel] = SentementAnalysisToolInput
+    description: str = "This tool analyzes the sentiment of a given text and returns a SentimentAnalysisToolOutput."
+    args_schema: Type[BaseModel] = SentimentAnalysisToolInput
 
-    def _run(self, input_data: SentementAnalysisToolInput) -> SentementAnalysisToolOutput:
+    def _run(self, input_data: SentimentAnalysisToolInput) -> SentimentAnalysisToolOutput:
         return sa_llm.invoke(input_data.text)
-
-
-
 
