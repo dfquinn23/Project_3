@@ -1,4 +1,4 @@
-# Project_3 - Agents using a Finetuned model
+# Project_3 - Agents Using a Finetuned Model
 
 ## Project Overview
 
