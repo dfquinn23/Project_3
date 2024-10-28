@@ -25,12 +25,12 @@ class StockAnalyzer:
         df = stock.history(start=self.start_date.strftime('%Y-%m-%d'), end=self.end_date.strftime('%Y-%m-%d'))
         return df
 
-    def get_news_headlines(self, input_dict=None) -> List[Dict]:
-        api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
-        url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={self.symbol}&apikey={api_key}'
+    # def get_news_headlines(self, input_dict=None) -> List[Dict]:
+    #     api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
+    #     url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={self.symbol}&apikey={api_key}'
         
-        r = requests.get(url)
-        data = r.json()
+    #     r = requests.get(url)
+    #     data = r.json()
         
         if 'feed' in data:
             return data['feed']
