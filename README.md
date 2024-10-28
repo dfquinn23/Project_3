@@ -30,7 +30,7 @@ Our group was interested in exploring the use of agents to solve a multi-step pr
 
 - In the second stage, the team reassembled several times and engaged in detailed discussions about what we wanted to agents to accomplish and what were the most efficient way to approach the task. The process of creating the agent framework and the underlying tools and models was a highly collaborative one.
 
-- In the final stage, the final model was tested and retest several times with additional fine-tuning as needed until the reports generated produced realistic, defensible output.
+- In the final stage, each team member was assigned one agent and task to code for the final model. It was tested and retested several times with additional fine-tuning as needed until the reports generated produced realistic, defensible output.
 
 
 ## Model Overview
