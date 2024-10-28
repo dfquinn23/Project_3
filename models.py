@@ -1,7 +1,19 @@
 from pydantic import BaseModel, Field
+# from d_tools import SentementAnalysisToolOutput
 
-from tools import SentementAnalysisToolOutput
+# tool
+# class TimestampOutput(BaseModel):
+#     timemstamp: str
 
+class SentementAnalysisToolInput(BaseModel):
+    text: str = Field(..., description="The text you want to run a sentiment analysis on.")
+
+class SentementAnalysisToolOutput(BaseModel):
+    reasoning: str
+    sentiment_score: float
+    confidence_score: float
+
+# output
 class CompanyInfo(BaseModel):
     company_name: str
     ticker: str
@@ -19,13 +31,4 @@ class SentimentAnalysis(BaseModel):
     average_sentiment_score: float
 
 
-class TimestampOutput(BaseModel):
-    timemstamp: str
 
-class SentementAnalysisToolInput(BaseModel):
-    text: str = Field(..., description="The text you want to run a sentiment analysis on.")
-
-class SentementAnalysisToolOutput(BaseModel):
-    reasoning: str
-    sentiment_score: float
-    confidence_score: float

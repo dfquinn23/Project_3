@@ -34,15 +34,7 @@ class SentimentAnalysisTool(BaseTool):
         self.call_sentiment_slm(input_data.text)
 
     def call_sentiment_slm(text: str) -> SentementAnalysisToolOutput:
-        print(text)
-        # prompt = [
-        #     {'content': 'You are an advanced AI assistant created to perform sentiment analysis on text. Your task is to carefully read the text and analyze the sentiment it expresses towards the potential future stock value of any company mentioned.  Analyze the sentiment of this text and respond with the appropriate JSON:',
-        #     'role': 'system'},
-        #     {'content': text,
-        #     'role': 'user'}
-        # ]
         result = llm.invoke(text)
-        print(result)
         return result
 
 class TimestampOutput(BaseModel):

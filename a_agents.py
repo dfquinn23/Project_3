@@ -1,7 +1,25 @@
 from crewai import Agent, LLM
-from crewai_tools import ScrapeWebsiteTool, SerperDevToo
-search_tool = SerperDevToo()
-scrape_tool = ScrapeWebsiteTool()
+from crewai_tools import ScrapeWebsiteTool, SerperDevTool
+from langchain_openai import OpenAI
+
+import os
+from dotenv import load_dotenv
+
+from d_tools import GetTimestampTool, SentimentAnalysisTool
+
+# Load environment variables
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+XAI_API_KEY = os.getenv("XAI_API_KEY")
+CLAUDE_API_KEY = os.getenv("CLAUDE_API_KEY")
+os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
+
+def get_llm(num) -> LLM:
+     if num == 0:
+        return OpenAI(api_key=OPENAI_API_KEY, model="gpt-3.5-turbo", temperature=0.3)
+     else:
+          return LLM(model="ollama/llama3:latest", temperature=0.3)
 
 """
 Purpose:
@@ -13,11 +31,18 @@ Purpose:
 
 """
 
-class Sentiment_Agents:
-    def __init__(self):
-        self.manager_llm = LLM(model="ollama/mattarad/llama3.2-3b-instruct-mqc-sa", temperature=0.3)
-        
-    def ticker_agent(self):
+class ResearchAgents:
+    def __init__(self, company):
+        self.company = company
+        self.search_tool = SerperDevTool()
+        self.scrape_tool = ScrapeWebsiteTool()
+        self.get_timestamp_tool = GetTimestampTool()
+        self.get_sentiment_analysis_tool = SentimentAnalysisTool()
+
+        # if this set to 0, then the LLM used will be OPENAI, else it will be a local running Ollama
+        self.llm_num = 0
+
+    def ticker_agent(self) -> Agent:
         return Agent(
             role = "Ticker Agent",
             goal =
@@ -29,12 +54,13 @@ class Sentiment_Agents:
                 3. You pride yourself on being fast, courteous, and accurate.
                 """,
             verbose=True,
-            tools=[search_tool],
+            tools=[self.search_tool],
             allow_delegation=True,
-            memory=True
+            memory=True,
+            llm = get_llm(self.llm_num)
           )
 
-    def research_agent(self):
+    def research_agent(self) -> Agent:
         return Agent(
             role="News Article Researcher",
             goal=
@@ -61,12 +87,13 @@ class Sentiment_Agents:
                 3.  You prioritize accuracy and reliability in your research.
                 """,
             verbose=True,
-            tools=[search_tool, scrape_tool],
+            tools=[self.search_tool, self.scrape_tool],
             allow_delegation=True,
-            memory=True
+            memory=True,
+            llm = get_llm(self.llm_num)
         )
 
-    def analyst_agent(self):
+    def analyst_agent(self) -> Agent:
         return Agent(
             role="Analyst",
             backstory=
@@ -82,20 +109,20 @@ class Sentiment_Agents:
                     You must be able to explain why you scored the stock as you did, with citations if possible.
             """,
             verbose=True,
-            manager_llm = manager_llm
+            llm = get_llm(self.llm_num)
         )
 
-def sentiment_agent(self):
+    def sentiment_agent(self):
         return Agent(
             role="Senior Financial Sentiment Analyst",
             backstory=
                 """"
                 1. You are a Senior Financial Sentiment Analyst\n
-                2. You specialize in conducting an informative financial sentiment analysis on a specific company
+                2. You specialize in conducting an informative financial sentiment analysis from the news articles and blog posts recieved by the previous agent.\n
                 3. .
                 """,
             goal="""
-                1. Take the financial news articles and blog posts related to {self.company_name} from the previous agent.
+                1. Take the financial news articles and blog posts from the previous agent.
                 2. Run a financial sentiment analysis on the articles and blog posts provided by the previous agent.
                 3. Get the current timestamp.
                 IMPORTANT:
@@ -103,6 +130,10 @@ def sentiment_agent(self):
                 - Only conduct a sentiment analysis on the financial news articles and blog posts for {self.company_name} frovided by the previous agent.
                 - Don't forget to save the document using a current timestamp!
             """,
-            verbose=True,
-            llm = LLM(model="ollama/llama3:latest", temperature=0.3)
+            max_iter=5,
+            max_retry_limit=1,
+            llm = get_llm(self.llm_num),
+            tools=[self.get_timestamp_tool, self.get_sentiment_analysis_tool],
+            memory=True,
+            verbose=True
         )
