@@ -1,6 +1,7 @@
 from crewai import Agent, Task
-from models import CompanyInfo, FinancialAnalysis, SentimentAnalysis
+from models import CompanyInfo, FinancialAnalysis, SentimentAnalysis, ArticleSummary
 from pydantic import BaseModel
+from typing import List
 
 class AgentTasks:
     def __init__(self, company_name) -> None:
@@ -38,6 +39,7 @@ class AgentTasks:
     
     def get_analysis_task(self, agent: Agent, tasks: list[Task]):
         return Task(
+            name="Analyze News",
             description=(
                 "1) Use the stock ticker symbol to search for recent (within the last 24 hours) news articles across major financial news sources, focusing on headlines or summaries. "
                 "2) Prioritize sources known for reliability, such as Bloomberg, CNBC, and Reuters, and avoid those with biased or low-quality reporting. "
@@ -54,7 +56,7 @@ class AgentTasks:
                 "Ensure the list excludes duplicate or irrelevant sources."
             ),
             context=tasks,
-            output_pydantic="List[ArticleSummary]"
+            output_pydantic=ArticleSummary  # Use the class directly
         )
     
     def get_sentiment_task(self, agent: Agent, tasks: list[Task]):
@@ -87,3 +89,4 @@ class Task(BaseModel):
     description: str
     expected_output: str
     output_pydantic: type  # Ensure this is a subclass of BaseModel
+

@@ -7,6 +7,7 @@ class CompanyResearchCrew:
     def __init__(self, company: str):
         self.company = company
         self.crew = None
+
     def setup_crew(self):
         print(f"Setting up crew for {self.company}")
         agents = ResearchAgents(self.company)
@@ -25,7 +26,7 @@ class CompanyResearchCrew:
         # Ensure that the Crew class is initialized correctly
         self.crew = Crew(
             tasks=[task_01, task_02, task_03, task_04],  # Ensure these are Task objects
-            process=Process.sequential,
+            # process=Process.SEQUENTIAL,  # Corrected to uppercase
             verbose=True
         )
 
@@ -35,8 +36,8 @@ class CompanyResearchCrew:
             return
         try:
             print(f"Running crew for company: {self.company}")
-            result = self.crew.kickouff()
+            result = self.crew.kickoff()  # Corrected method name
             return result
         except Exception as e:
+            print(f"Error running crew: {e}")  # Added error logging
             return str(e)
-        
