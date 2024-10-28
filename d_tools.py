@@ -11,6 +11,7 @@ from crewai_tools import BaseTool
 from pydantic import BaseModel, Field
 
 from models import SentimentAnalysisToolInput, SentimentAnalysisToolOutput
+# Ensure these classes are defined in models.py
 
 
 class StockAnalyzer:
@@ -26,14 +27,11 @@ class StockAnalyzer:
         return df
 
     def get_news_headlines(self, input_dict=None) -> List[Dict]:
-        api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
-        url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={self.symbol}&apikey={api_key}'
+        stock = yf.Ticker(self.symbol)
+        news = stock.news
         
-        r = requests.get(url)
-        data = r.json()
-        
-        if 'feed' in data:
-            return data['feed']
+        if news:
+            return news
         return []
 
     def analyze_headlines_sentiment(self, headlines: List[Dict]) -> Dict:

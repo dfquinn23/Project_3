@@ -6,10 +6,11 @@ from typing import List
 # class TimestampOutput(BaseModel):
 #     timemstamp: str
 
-class SentementAnalysisToolInput(BaseModel):
-    text: str = Field(..., description="The text you want to run a sentiment analysis on.")
+class SentimentAnalysisToolInput(BaseModel):
+    text: str
+    # Add other fields as necessary
 
-class SentementAnalysisToolOutput(BaseModel):
+class SentimentAnalysisToolOutput(BaseModel):
     reasoning: str
     sentiment_score: float
     confidence_score: float
@@ -28,7 +29,7 @@ class SentimentAnalysis(BaseModel):
     company_name: str
     ticker: str
     sentiment_analysis: str
-    analysis: list[SentementAnalysisToolOutput]
+    analysis: list[SentimentAnalysisToolOutput]
     average_sentiment_score: float
 
 class ArticleSummary(BaseModel):

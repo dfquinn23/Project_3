@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 from d_tools import GetTimestampTool, SentimentAnalysisTool
 from typing import List
-from models import ArticleSummary  # Replace 'models' with the correct module if necessary
+from models import ArticleSummary
 
 # Load environment variables
 load_dotenv()
@@ -19,7 +19,7 @@ os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
 
 def get_llm(num) -> LLM:
     if num == 0:
-        return OpenAI(api_key=OPENAI_API_KEY, model="gpt-3.5-turbo", temperature=0.3)
+        return OpenAI(api_key=OPENAI_API_KEY, model="gpt-4o-mini", temperature=0.3)
     else:
         return LLM(model="ollama/llama3:latest", temperature=0.3)
 
@@ -146,3 +146,13 @@ class ResearchAgents:
         }
 
         return task
+
+    def get_tool_input(self) -> dict:
+        """
+        Creates a tool input dictionary for the stock ticker search
+        Returns:
+            dict: Tool input configuration
+        """
+        return {
+            "search_query": f"{self.company} stock ticker"
+        }

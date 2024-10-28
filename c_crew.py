@@ -26,7 +26,7 @@ class CompanyResearchCrew:
         # Ensure that the Crew class is initialized correctly
         self.crew = Crew(
             tasks=[task_01, task_02, task_03, task_04],  # Ensure these are Task objects
-            # process=Process.SEQUENTIAL,  # Corrected to uppercase
+            process=Process.sequential,
             verbose=True
         )
 
