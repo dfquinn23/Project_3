@@ -1,8 +1,8 @@
 from c_crew import CompanyResearchCrew
 
-input = input("enter the name of the company you want the Research Agents to research: ")
+company_name = input("Enter the name of the company you want the Research Agents to research: ")
 
-crew = CompanyResearchCrew(input)
+crew = CompanyResearchCrew(company_name)
 crew.setup_crew()
 res = crew.kickoff()
 print(res)

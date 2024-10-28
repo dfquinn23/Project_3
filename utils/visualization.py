@@ -3,6 +3,7 @@ import plotly.express as px
 from typing import Dict, List
 import pandas as pd
 import numpy as np
+import streamlit as st
 
 class SmartVestVisualizer:
     def create_portfolio_allocation_chart(self, recommendations: Dict) -> go.Figure:
@@ -98,3 +99,45 @@ class SmartVestVisualizer:
             }
         ))
         return fig
+
+    def display_analysis(self, results):
+        st.subheader("Stock Performance")
+        st.write(f"Start Price: {results['stock_performance']['start_price']}")
+        st.write(f"End Price: {results['stock_performance']['end_price']}")
+        st.write(f"Percent Change: {results['stock_performance']['percent_change']}%")
+
+        st.subheader("Sentiment Analysis")
+        st.write(f"Average Sentiment: {results['sentiment_analysis']['average_sentiment']}")
+        st.write(f"Number of Headlines: {results['sentiment_analysis']['num_headlines']}")
+
+        st.subheader("Financial Metrics")
+        st.write(f"Daily High: {results['financial_metrics']['daily_high']}")
+        st.write(f"Daily Low: {results['financial_metrics']['daily_low']}")
+        st.write(f"Volume: {results['financial_metrics']['volume']}")
+        st.write(f"Market Cap: {results['financial_metrics']['market_cap']}")
+
+    def create_sentiment_clock(self, sentiment_score: float) -> go.Figure:
+        """Create a gauge chart showing sentiment score"""
+        fig = go.Figure(go.Indicator(
+            mode="gauge+number",
+            value=sentiment_score * 100,
+            title={'text': "Sentiment Score"},
+            gauge={
+                'axis': {'range': [-100, 100]},
+                'bar': {'color': "darkblue"},
+                'steps': [
+                    {'range': [-100, 0], 'color': "red"},
+                    {'range': [0, 100], 'color': "green"}
+                ]
+            }
+        ))
+        return fig
+
+    def load_final_report(self, file_path):
+        try:
+            with open(file_path, 'r') as file:
+                report = file.read()
+            st.subheader("Final Report")
+            st.text(report)
+        except FileNotFoundError:
+            st.error("Final report not found.")

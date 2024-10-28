@@ -23,9 +23,8 @@ class CompanyResearchCrew:
         task_03 = tasks.get_analysis_task(analyst_agent, [task_01, task_02])
         task_04 = tasks.get_sentiment_task(sentiment_agent, [task_01, task_02, task_03])
 
-        # Ensure that the Crew class is initialized correctly
         self.crew = Crew(
-            tasks=[task_01, task_02, task_03, task_04],  # Ensure these are Task objects
+            tasks=[task_01, task_02, task_03, task_04],
             process=Process.sequential,
             verbose=True
         )
@@ -36,8 +35,8 @@ class CompanyResearchCrew:
             return
         try:
             print(f"Running crew for company: {self.company}")
-            result = self.crew.kickoff()  # Corrected method name
+            result = self.crew.kickoff()
             return result
         except Exception as e:
-            print(f"Error running crew: {e}")  # Added error logging
+            print(f"Error running crew: {e}")
             return str(e)
