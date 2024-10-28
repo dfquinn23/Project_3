@@ -38,12 +38,23 @@ class AgentTasks:
     
     def get_analysis_task(self, agent: Agent, tasks: list[Task]):
         return Task(
-            name="Analyze News",
-            description="Analyze the news articles to extract key insights and trends.",
+            description=(
+                "1) Use the stock ticker symbol to search for recent (within the last 24 hours) news articles across major financial news sources, focusing on headlines or summaries. "
+                "2) Prioritize sources known for reliability, such as Bloomberg, CNBC, and Reuters, and avoid those with biased or low-quality reporting. "
+                "3) Provide a summary list of up to 10 relevant news articles, formatted for easy processing by the Sentiment Analyst Agent. "
+                "The information gathered should maintain a high standard of objectivity and credibility."
+            ),
             agent=agent,
-            expected_output="A detailed analysis report of the news articles.",
+            expected_output=(
+                "A list of up to 10 recent news articles (title and brief summary) relevant to the specified stock ticker symbol. "
+                "Each entry should include: "
+                "- Title of the article "
+                "- Complete text of each article, capturing all details for analysis "
+                "- Publication date "
+                "Ensure the list excludes duplicate or irrelevant sources."
+            ),
             context=tasks,
-            output_pydantic=FinancialAnalysis  # Ensure this is a valid subclass of BaseModel
+            output_pydantic="List[ArticleSummary]"
         )
     
     def get_sentiment_task(self, agent: Agent, tasks: list[Task]):

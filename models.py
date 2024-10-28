@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from typing import List
 # from d_tools import SentementAnalysisToolOutput
 
 # tool
@@ -30,5 +31,13 @@ class SentimentAnalysis(BaseModel):
     analysis: list[SentementAnalysisToolOutput]
     average_sentiment_score: float
 
+class ArticleSummary(BaseModel):
+    """
+    The ellipsis makes the field required, alternative is to use sometinig like 'title: str', etc.
+    The 'description=' is optional for self documenting and can be omitted.
+    """
+    title: str = Field(..., description="The title of the news article.") 
+    content: str = Field(..., description="The full content of the news article.")
+    publication_date: str = Field(..., description="The publication date of the article.")
 
 
