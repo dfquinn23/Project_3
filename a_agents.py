@@ -5,9 +5,10 @@ from langchain_openai import OpenAI
 import os
 from dotenv import load_dotenv
 
-from d_tools import GetTimestampTool, SentimentAnalysisTool
+from d_tools import GetTimestampTool, SentimentAnalysisTool, FormatJSONReportTool
 from typing import List
 from models import ArticleSummary
+from litellm import completion
 
 # Load environment variables
 load_dotenv()
@@ -18,10 +19,21 @@ CLAUDE_API_KEY = os.getenv("CLAUDE_API_KEY")
 os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
 
 def get_llm(num) -> LLM:
-    if num == 0:
-        return OpenAI(api_key=OPENAI_API_KEY, model="gpt-4o-mini", temperature=0.3)
-    else:
-        return LLM(model="ollama/llama3:latest", temperature=0.3)
+    try:
+        if num == 0:
+            return completion(
+                api_key=OPENAI_API_KEY, 
+                model="gpt-4o-mini", 
+                temperature=0.3)
+        else:
+            return completion(
+                model="mattarad/llama3.2-3b-instruct-mqc-sa",
+                temperature=0.3,
+                api_base="http://127.0.0.1:11434",  # Update to match `ollama` port
+                provider="ollama"  # Set to 'ollama' if using locally
+            )
+    except Exception as e:
+        print("Error in get_llm:", e)
 
 """
 Purpose:
@@ -35,12 +47,14 @@ Purpose:
 class ResearchAgents:
     def __init__(self, company):
         self.company = company
+        print(f"Research agent initialized for company: {self.company}")  # Debugging statement
         self.search_tool = SerperDevTool()
         self.scrape_tool = ScrapeWebsiteTool()
         self.get_timestamp_tool = GetTimestampTool()
         self.get_sentiment_analysis_tool = SentimentAnalysisTool()
-        self.get_financial_metrics_tool = FinancialMetricsTool()
-        self.llm_num = 0 # 0 for OPENAI, 1 for Ollama
+        self.format_json_report_tool = FormatJSONReportTool()
+        self.llm = get_llm(num=1)
+        
 
     def ticker_agent(self) -> Agent:
         return Agent(
@@ -55,7 +69,7 @@ class ResearchAgents:
             tools=[self.search_tool],
             # allow_delegation=True,
             memory=True,
-            llm=get_llm(self.llm_num)
+            llm=self.llm
         )
 
     def research_agent(self) -> Agent:
@@ -86,23 +100,33 @@ class ResearchAgents:
             tools=[self.search_tool, self.scrape_tool],
             # allow_delegation=True,
             memory=True,
-            llm=get_llm(self.llm_num)
+            llm=self.llm
         )
 
     def analyst_agent(self) -> Agent:
         return Agent(
             role="Analyst",
             backstory="""
-                 1. You are a financial analyst with experience in creating simple financial reports.
-                 2. Your writing style is clear and concise.
-                 """,
-            goal="""
-                 1. Receive the research from the Research Agent and write a simple financial report for the {self.company}.
-                 2. The report should be straightforward and easy to understand.
-                 """,
+                1. You are a financial analyst specializing in creating structured financial reports.
+                2. Your expertise lies in analyzing financial news and creating clear, JSON-formatted reports.
+                3. You always use the Format JSON Report Tool to ensure consistent output structure.
+                4. You excel at synthesizing multiple inputs into a single comprehensive analysis.
+                """,
+            goal=f"""
+                1. Analyze all inputs from previous agents about {self.company} and synthesize into ONE final report.
+                2. Create a single comprehensive financial report that includes:
+                   - Company name and ticker
+                   - Consolidated summary of all news articles
+                   - Overall financial analysis incorporating all data points
+                3. Use the Format JSON Report Tool to structure your final output.
+                4. Include a timestamp in your report using the Get Timestamp Tool.
+                5. Ensure the report is cohesive and avoids redundant information.
+                """,
             verbose=True,
-            tools=[self.get_timestamp_tool],
-            llm=get_llm(self.llm_num)
+            tools=[self.get_timestamp_tool, self.format_json_report_tool],
+            max_retry_limit=1,
+            memory=False,
+            llm=self.llm
         )
 
     def sentiment_agent(self) -> Agent:
@@ -123,8 +147,8 @@ class ResearchAgents:
                  """,
             max_iter=5,
             max_retry_limit=1,
-            llm=get_llm(self.llm_num),
-            tools=[self.timestamp_tool, self.sentiment_analysis_tool],
+            llm=self.llm,
+            tools=[self.get_timestamp_tool, self.get_sentiment_analysis_tool],
             memory=True,
             verbose=True
         )

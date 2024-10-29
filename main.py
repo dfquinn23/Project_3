@@ -1,9 +1,19 @@
 from c_crew import CompanyResearchCrew
+from utils.agentsealogo import display_logo
 
-company_name = input("Enter the name of the company you want the Research Agents to research: ")
+def main():
+    # Display the Agent Sea logo
+    display_logo()
+    
+    # Get user input
+    company_name = input("\nEnter the name of the company you want the Research Agents to research: ")
+    print(f"Company name entered: {company_name}")
 
-crew = CompanyResearchCrew(company_name)
-crew.setup_crew()
-result = crew.kickoff()
+    # Create and run the crew
+    crew = CompanyResearchCrew(company_name)
+    crew.setup_crew()
+    res = crew.kickoff()
+    print(f"Results from crew: {res}")
 
-print(result)
+if __name__ == "__main__":
+    main()

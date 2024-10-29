@@ -1,0 +1,54 @@
+/* utils/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #f0f4f8, #e0e7ff); /* Gradient background */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333; /* Darker text color for headings */
+}
+
+.sidebar {
+    background-color: #e0e7ff; /* Light blue sidebar */
+    padding: 20px; /* Add padding for better appearance */
+}
+
+.stButton > button {
+    background-color: #4a90e2; /* Button color */
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px; /* Add padding for better appearance */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.stButton > button:hover {
+    background-color: #357ABD; /* Darker shade on hover */
+}
+
+.stTextInput > div > input {
+    border: 1px solid #4a90e2; /* Input border color */
+    border-radius: 5px;
+    padding: 10px; /* Add padding for better appearance */
+}
+
+.stMarkdown {
+    background-color: #ffffff; /* White background for markdown */
+    padding: 20px; /* Increased padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    margin-bottom: 20px; /* Space between sections */
+}
+
+.card {
+    background-color: #ffffff; /* Card background */
+    padding: 20px; /* Card padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    margin-bottom: 20px; /* Space between cards */
+}
+
+.stSpinner {
+    color: #4a90e2; /* Spinner color */
+}
