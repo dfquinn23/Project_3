@@ -36,6 +36,7 @@ class CompanyResearchCrew:
         try:
             print(f"Running crew for company: {self.company}")
             result = self.crew.kickoff()
+
             return result
         except Exception as e:
             print(f"Error running crew: {e}")

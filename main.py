@@ -4,5 +4,6 @@ company_name = input("Enter the name of the company you want the Research Agents
 
 crew = CompanyResearchCrew(company_name)
 crew.setup_crew()
-res = crew.kickoff()
-print(res)
+result = crew.kickoff()
+
+print(result)
