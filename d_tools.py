@@ -109,7 +109,7 @@ class GetTimestampTool(BaseTool):
 
 class SentimentAnalysisTool(BaseTool):
     name: str = "Sentiment Analysis Tool"
-    description: str = "This tool analyzes the sentiment of a given text and returns a list of SentimentAnalysisToolOutput."
+    description: str = "This tool iterantes through a list of text, analyzes the sentiment of the text and returns a list of SentimentAnalysisToolOutput."
     args_schema: Type[BaseModel] = NewsArticles
 
     def _run(self, articles: NewsArticles) -> List[SentimentAnalysisToolOutput]:

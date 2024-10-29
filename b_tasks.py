@@ -65,8 +65,8 @@ class AgentTasks:
         return Task(
             name="Get Sentiment",
             description=(
-                "Conduct a financial sentiment analysis for all of the articles and blog posts that the previous agent provided."
-                "NewsSummaries.summaries will contain the list of articles"
+                "Conduct a financial sentiment analysis for all of the articles and blog posts that the News Article Researcher agent provided."
+                "NewsSummaries.summaries will contain the list of articles from the Get News task."
                 "Remember to also get a timestamp for when you save the file and save it to the tasks timestamp variable under this task."
                 "Don't forget to use the obtained timestamp in the saved file name."
             ),

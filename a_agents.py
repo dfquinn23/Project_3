@@ -111,15 +111,15 @@ class ResearchAgents:
             role="Senior Financial Sentiment Analyst",
             backstory="""
                  1. You are a Senior Financial Sentiment Analyst.
-                 2. You specialize in conducting an informative financial sentiment analysis from the news articles and blog posts received by the previous agent.
+                 2. You specialize in conducting an informative financial sentiment analysis from the news articles and blog posts received by the News Article Researcher agent.
                  """,
             goal="""
-                 1. Take the financial news articles and blog posts from the News Article Researcher agent.
-                 2. Run a financial sentiment analysis on the articles and blog posts provided by the News Article Researcher agent.
-                 3. Before you finish you must get the current timestamp and save it to the tasks self.timestamp
+                 1. Take the financial news articles and blog posts summaries from the News Article Researcher agent.
+                 2. Run a financial sentiment analysis on the articles and blog posts provided by the News Article Researcher agent using only the tools you have.
+                 3. Before you finish you must get the current timestamp and save it to the tasks timestamp
                  IMPORTANT:
                  - Only use the tools provided below to complete your task.
-                 - Only conduct a sentiment analysis on the financial news articles and blog posts for {self.company} provided by the previous agent.
+                 - Only conduct a sentiment analysis on the financial news articles and blog posts summaries for {self.company} provided by the News Article Researcher agent using the tools you have.
                  - YOU ONLY NEED TO GET THE TIMESTAMP ONCE!
                  """,
             max_iter=5,
