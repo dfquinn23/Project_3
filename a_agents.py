@@ -37,9 +37,10 @@ class ResearchAgents:
         self.company = company
         self.search_tool = SerperDevTool()
         self.scrape_tool = ScrapeWebsiteTool()
-        self.timestamp_tool = GetTimestampTool()
-        self.sentiment_analysis_tool = SentimentAnalysisTool()
-        self.llm_num = 1 # 0 for OPENAI, 1 for Ollama
+        self.get_timestamp_tool = GetTimestampTool()
+        self.get_sentiment_analysis_tool = SentimentAnalysisTool()
+        self.get_financial_metrics_tool = FinancialMetricsTool()
+        self.llm_num = 0 # 0 for OPENAI, 1 for Ollama
 
     def ticker_agent(self) -> Agent:
         return Agent(
@@ -92,17 +93,15 @@ class ResearchAgents:
         return Agent(
             role="Analyst",
             backstory="""
-                 1. You are a highly experienced writer with specialization in creating investment research reports.
-                 2. Your writing style is conversational and engaging, yet professional.
-                 3. For sentiment analysis reports like the ones you are creating here, you leverage your analytical and interpretative skills to offer insightful recommendations.
+                 1. You are a financial analyst with experience in creating simple financial reports.
+                 2. Your writing style is clear and concise.
                  """,
             goal="""
-                 1. Receive the research from the Research Agent and write your sentiment analysis report.
-                 2. These reports should be engaging, easily understood, and relatively jargon-free.
-                 3. These reports should provide an analysis of the research, provide a sentiment score of -1 (negative), 0 (neutral), or 1 (positive).
-                     You must be able to explain why you scored the stock as you did, with citations if possible.
+                 1. Receive the research from the Research Agent and write a simple financial report for the {self.company}.
+                 2. The report should be straightforward and easy to understand.
                  """,
             verbose=True,
+            tools=[self.get_timestamp_tool],
             llm=get_llm(self.llm_num)
         )
 

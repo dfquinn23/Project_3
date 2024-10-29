@@ -1,4 +1,5 @@
 from crewai import Agent, Task
+from models import CompanyInfo, FinancialAnalysis, SentimentAnalysis, ArticleSummary, FinancialMetrics
 from models import CompanyInfo, NewsArticles, FinancialAnalysis, SentimentAnalysis
 from pydantic import BaseModel
 from typing import List
@@ -56,6 +57,15 @@ class AgentTasks:
             ),
             context=tasks,
             output_pydantic=FinancialAnalysis  # Use the class directly
+        )
+    
+    def get_financial_metrics_task(self, agent: Agent, tasks: list[Task]):
+        return Task(
+            name="Get Financial Metrics",
+            description="Get the financial metrics for the company",
+            agent=agent,
+            expected_output="The financial metrics for the company",
+            output_pydantic=FinancialMetrics
         )
     
     def get_sentiment_task(self, agent: Agent, tasks: list[Task]):
