@@ -53,7 +53,7 @@ Additionally, we utilized several additional tools from outside the scope of cla
 
 1. CrewAI open source agent platform and tools
 2. Pydantic validation tool
-3. Hugging Face-sourced fine-tuning tool (see "Notes on the LLM models" below)
+3. Fine-tuning tools from Hugging Face (see "Notes on the LLM models" below) and Unsloth
 4. Ollama/trained Llama LLMs
 5. YahooFinance API
 
