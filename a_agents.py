@@ -53,7 +53,7 @@ class ResearchAgents:
         self.get_timestamp_tool = GetTimestampTool()
         self.get_sentiment_analysis_tool = SentimentAnalysisTool()
         self.format_json_report_tool = FormatJSONReportTool()
-        self.llm = get_llm(num=1)
+        self.llm = get_llm(num=0)
         
 
     def ticker_agent(self) -> Agent:

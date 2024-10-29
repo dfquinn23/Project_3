@@ -23,10 +23,6 @@ h1, h2, h3, h4, h5, h6 {
     transition: background-color 0.3s; /* Smooth transition */
 }
 
-.stButton > button:hover {
-    background-color: #357ABD; /* Darker shade on hover */
-}
-
 .stTextInput > div > input {
     border: 1px solid #4a90e2; /* Input border color */
     border-radius: 5px;
@@ -51,4 +47,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .stSpinner {
     color: #4a90e2; /* Spinner color */
+}
+
+/* Animation for the logo */
+.logo {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
 }
