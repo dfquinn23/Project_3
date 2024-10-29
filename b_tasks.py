@@ -55,7 +55,6 @@ class AgentTasks:
                 "        'News Summaries': [summaries],\n"
                 "        'Financial Analysis': {\n"
                 "            'Report': analysis,\n"
-                "            'Sentiment Analysis': {\n"
                 "                'Individual Article Analysis': [analysis_details],\n"
                 "            }\n"
                 "        }\n"
