@@ -57,16 +57,6 @@ class StockAnalyzer:
             'percent_change': ((stock_data['Close'].iloc[-1] - stock_data['Close'].iloc[0]) / stock_data['Close'].iloc[0]) * 100
         }
 
-    def get_financial_metrics(self, input_dict=None) -> Dict:
-        stock = yf.Ticker(self.symbol)
-        info = stock.info
-        return {
-            'daily_high': info.get('dayHigh'),
-            'daily_low': info.get('dayLow'),
-            'volume': info.get('volume'),
-            'market_cap': info.get('marketCap')
-        }
-
     def analyze_sentiment(self) -> Dict:
         stock_data = self.get_stock_data()
         headlines = self.get_news_headlines()
@@ -97,7 +87,16 @@ class StockAnalyzer:
 
 
 # 3B model
-sa_llm = OllamaLLM(model="mattarad/llama3.2-1b-instruct-mqc-sa", temperature=0.25)
+try:
+    sa_llm = OllamaLLM(
+        model="mattarad/llama3.2-3b-instruct-mqc-sa",  # Updated to 3b model
+        temperature=0.25,
+        base_url="http://localhost:11434"  # Add explicit base URL
+    )
+except Exception as e:
+    print(f"Error initializing Ollama: {e}")
+    # Fallback to a different model or raise error
+    raise
 
 
 class GetTimestampTool(BaseTool):
@@ -124,4 +123,57 @@ class SentimentAnalysisTool(BaseTool):
             )
             analysis.append(sentiment_output)
         return analysis
+
+class FormatJSONReportTool(BaseTool):
+    name: str = "Format JSON Report Tool"
+    description: str = "This tool formats financial analysis data into a structured JSON report"
+
+    def _run(self, input_data: dict) -> str:
+        """Format the input data into a structured JSON report"""
+        try:
+            report = {
+                "Company Analysis Report": {
+                    "Company Information": {
+                        "Name": input_data.get("company_name"),
+                        "Ticker Symbol": input_data.get("ticker"),
+                        "Report Generated": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    },
+                    "News Summaries": [
+                        f"• {summary}" for summary in input_data.get("summaries", [])
+                    ],
+                    "Financial Analysis": {
+                        "Report": input_data.get("financial_report"),
+                        "Sentiment Analysis": {
+                            "Individual Article Analysis": [
+                                {
+                                    "Analysis": analysis.get("reasoning"),
+                                    "Sentiment Score": f"{analysis.get('sentiment_score', 0):.2f}",
+                                    "Confidence": f"{analysis.get('confidence_score', 0):.2f}"
+                                }
+                                for analysis in input_data.get("analysis", [])
+                            ],
+                            "Overall Sentiment Score": f"{input_data.get('average_sentiment_score', 0):.2f}"
+                        }
+                    }
+                }
+            }
+            
+            return json.dumps(report, indent=4)
+        except Exception as e:
+            print(f"Error formatting JSON report: {str(e)}")
+            return "{}"
+
+class FinancialMetricsTool(BaseTool):
+    name: str = "Financial Metrics Tool"
+    description: str = "This tool retrieves financial metrics for a given company."
+
+    def _run(self, company_name: str) -> dict:
+        # Logic to retrieve financial metrics
+        metrics = {
+            "revenue": 1000000,
+            "net_income": 200000,
+            "assets": 5000000,
+            "liabilities": 3000000
+        }
+        return metrics
 

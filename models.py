@@ -50,9 +50,4 @@ class ArticleSummary(BaseModel):
     content: str = Field(..., description="The full content of the news article.")
     publication_date: str = Field(..., description="The publication date of the article.")
 
-class FinancialMetrics(BaseModel):
-    company_name: str
-    ticker: str
-    financial_metrics: str
-
 
