@@ -1,4 +1,6 @@
-# Project_3 - Agents Using a Finetuned Model
+# Project_3 - AgentSea -- Agents Using a Finetuned Model
+
+![Agent Sea Logo](utils/logo.png)
 
 ## Project Overview
 
@@ -118,7 +120,43 @@ By utilizing CrewAI, developers can create sophisticated AI-driven systems where
 
 For more detailed information and tutorials on implementing CrewAI, you can visit the official documentation at https://docs.crewai.com/.
 
+## Running the AgentSea Application
 
+To run the application, follow these steps:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+   ```
+
+2. **Install Dependencies**:
+   Make sure you have Python installed, then install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the Application**:
+   Start the Streamlit application by running:
+   ```bash
+   streamlit run app.py
+   ```
+
+4. **Access the App**:
+   After running the command, a new tab will open in your default web browser, displaying the Agent Sea application. You can enter the company name in the input field and click "Analyze" to get the sentiment analysis results.
+
+5. **Ensure Ollama is Running**:
+   If you are using the Ollama model, make sure the Ollama service is running locally. You can start it with:
+   ```bash
+   ollama run mattarad/llama3.2-3b-instruct-mqc-sa
+   ```
+
+6. **Enjoy the Analysis**:
+   The application will display the analysis results, including a sentiment visualization and a final report.
+
+## License
+
+This project is licensed under the MIT License.
 
 ## License
 	GNU GENERAL PUBLIC LICENSE,  Version 3, 29 June 2007
