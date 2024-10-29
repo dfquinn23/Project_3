@@ -18,7 +18,7 @@ class AgentTasks:
                 3. The ticker_agent will then return the stock ticker and pass it to the research_agent to research sentiment surrounding the stock
             """,
             agent=agent,
-            expected_output=f"The ticker_agent will return the stock ticker symbol for {self.company_name} to pass to the research_agent",
+            expected_output=f"A json object containing {self.company_name} and the ticker symbol",
             output_pydantic=CompanyInfo
         )
 
@@ -30,7 +30,7 @@ class AgentTasks:
             ),
             agent=agent,
             expected_output=(
-                f"A list of summaries for the news articles related to the company {self.company_name}."
+                f"A json object containing the summaries for 5 news articles related to the company {self.company_name}."
             ),
             context=tasks,
             output_pydantic=NewsArticles
@@ -40,9 +40,9 @@ class AgentTasks:
         return Task(
             name="Analyze News",
             description=(
-                "1) Use the stock ticker symbol to search for recent (within the last 24 hours) news articles across major financial news sources, focusing on headlines or summaries. "
-                "2) Prioritize sources known for reliability, such as Bloomberg, CNBC, and Reuters, and avoid those with biased or low-quality reporting. "
-                "3) Provide a summary list of up to 10 relevant news articles, formatted for easy processing by the Sentiment Analyst Agent. "
+                "1. Use the stock ticker symbol to search for recent (within the last 24 hours) news articles across major financial news sources, focusing on headlines or summaries. "
+                "2. Prioritize sources known for reliability, such as Bloomberg, CNBC, and Reuters, and avoid those with biased or low-quality reporting. "
+                "3. Provide a summary list of up to 10 relevant news articles, formatted for easy processing by the Sentiment Analyst Agent. "
                 "The information gathered should maintain a high standard of objectivity and credibility."
             ),
             agent=agent,
@@ -65,8 +65,8 @@ class AgentTasks:
         return Task(
             name="Get Sentiment",
             description=(
-                "Conduct a financial sentiment analysis for all of the articles and blog posts that the previous agent provided."
-                "NewsSummaries.summaries will contain the list of articles"
+                "Conduct a financial sentiment analysis for all of the articles and blog posts that the News Article Researcher agent provided from the Get News task."
+                "NewsSummaries.summaries will contain the list of articles from the Get News task."
                 "Remember to also get a timestamp for when you save the file and save it to the tasks timestamp variable under this task."
                 "Don't forget to use the obtained timestamp in the saved file name."
             ),
@@ -78,15 +78,19 @@ class AgentTasks:
                 "{\n"
                 f"'company_name': {self.company_name}',\n"
                 f"'ticker': [the found ticker for {self.company_name}]',\n"
-                "'sentiment_analysis': 'your overall financial sentiment analysis summary goes here.'',\n"
+                f"summaries: list[str],\n"
+                "'financial_report': 'your overall financial sentiment analysis summary goes here.',\n"
                 "'analysis': list[SentimentAnalysisToolOutput]\n"
                 "'average_sentiment_score': [float of an average sentimentscore]',\n"
                 "}\n"
             ),
+
             output_file=f"output/financial_analysis_{round(timestamp)}.md",
             context=tasks,
             output_pydantic=SentimentAnalysis  # Ensure this is a valid subclass of BaseModel
         )
+
+
 
 # Remove or rename this custom Task class as it conflicts with crewai.Task
 # class Task(BaseModel):
