@@ -1,5 +1,5 @@
 from crewai import Agent, Task
-from models import CompanyInfo, FinancialAnalysis, SentimentAnalysis, ArticleSummary
+from models import CompanyInfo, FinancialAnalysis, SentimentAnalysis, ArticleSummary, FinancialMetrics
 from pydantic import BaseModel
 from typing import List
 from datetime import datetime
@@ -39,9 +39,9 @@ class AgentTasks:
         return Task(
             name="Analyze News",
             description=(
-                "1) Use the stock ticker symbol to search for recent (within the last 24 hours) news articles across major financial news sources, focusing on headlines or summaries. "
-                "2) Prioritize sources known for reliability, such as Bloomberg, CNBC, and Reuters, and avoid those with biased or low-quality reporting. "
-                "3) Provide a summary list of up to 10 relevant news articles, formatted for easy processing by the Sentiment Analyst Agent. "
+                "1. Use the stock ticker symbol to search for recent (within the last 24 hours) news articles across major financial news sources, focusing on headlines or summaries. "
+                "2. Prioritize sources known for reliability, such as Bloomberg, CNBC, and Reuters, and avoid those with biased or low-quality reporting. "
+                "3. Provide a summary list of up to 10 relevant news articles, formatted for easy processing by the Sentiment Analyst Agent. "
                 "The information gathered should maintain a high standard of objectivity and credibility."
             ),
             agent=agent,
@@ -55,6 +55,15 @@ class AgentTasks:
             ),
             context=tasks,
             output_pydantic=ArticleSummary  # Use the class directly
+        )
+    
+    def get_financial_metrics_task(self, agent: Agent, tasks: list[Task]):
+        return Task(
+            name="Get Financial Metrics",
+            description="Get the financial metrics for the company",
+            agent=agent,
+            expected_output="The financial metrics for the company",
+            output_pydantic=FinancialMetrics
         )
     
     def get_sentiment_task(self, agent: Agent, tasks: list[Task]):
