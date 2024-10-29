@@ -1,4 +1,6 @@
-# Project_3 - Agents Using a Finetuned Model
+# Project_3 - AgentSea -- Agents Using a Finetuned Model
+
+![Agent Sea Logo](utils/logo.png)
 
 ## Project Overview
 
