@@ -37,9 +37,9 @@ class ResearchAgents:
         self.company = company
         self.search_tool = SerperDevTool()
         self.scrape_tool = ScrapeWebsiteTool()
-        self.get_timestamp_tool = GetTimestampTool()
-        self.get_sentiment_analysis_tool = SentimentAnalysisTool()
-        self.llm_num = 0 # 0 for OPENAI, 1 for Ollama
+        self.timestamp_tool = GetTimestampTool()
+        self.sentiment_analysis_tool = SentimentAnalysisTool()
+        self.llm_num = 1 # 0 for OPENAI, 1 for Ollama
 
     def ticker_agent(self) -> Agent:
         return Agent(
@@ -52,7 +52,7 @@ class ResearchAgents:
                  """,
             verbose=True,
             tools=[self.search_tool],
-            allow_delegation=True,
+            # allow_delegation=True,
             memory=True,
             llm=get_llm(self.llm_num)
         )
@@ -83,7 +83,7 @@ class ResearchAgents:
                  """,
             verbose=True,
             tools=[self.search_tool, self.scrape_tool],
-            allow_delegation=True,
+            # allow_delegation=True,
             memory=True,
             llm=get_llm(self.llm_num)
         )
@@ -114,18 +114,18 @@ class ResearchAgents:
                  2. You specialize in conducting an informative financial sentiment analysis from the news articles and blog posts received by the previous agent.
                  """,
             goal="""
-                 1. Take the financial news articles and blog posts from the previous agent.
-                 2. Run a financial sentiment analysis on the articles and blog posts provided by the previous agent.
-                 3. Get the current timestamp.
+                 1. Take the financial news articles and blog posts from the News Article Researcher agent.
+                 2. Run a financial sentiment analysis on the articles and blog posts provided by the News Article Researcher agent.
+                 3. Before you finish you must get the current timestamp and save it to the tasks self.timestamp
                  IMPORTANT:
                  - Only use the tools provided below to complete your task.
                  - Only conduct a sentiment analysis on the financial news articles and blog posts for {self.company} provided by the previous agent.
-                 - Don't forget to save the document using a current timestamp!
+                 - YOU ONLY NEED TO GET THE TIMESTAMP ONCE!
                  """,
             max_iter=5,
             max_retry_limit=1,
             llm=get_llm(self.llm_num),
-            tools=[self.get_timestamp_tool, self.get_sentiment_analysis_tool],
+            tools=[self.timestamp_tool, self.sentiment_analysis_tool],
             memory=True,
             verbose=True
         )

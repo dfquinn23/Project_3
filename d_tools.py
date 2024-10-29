@@ -10,7 +10,7 @@ from langchain_ollama.llms import OllamaLLM
 from crewai_tools import BaseTool
 from pydantic import BaseModel, Field
 
-from models import SentimentAnalysisToolInput, SentimentAnalysisToolOutput
+from models import SentimentAnalysisToolInput, NewsArticles, SentimentAnalysisToolOutput
 
 
 class StockAnalyzer:
@@ -74,6 +74,7 @@ class StockAnalyzer:
         sentiment_analysis = self.analyze_headlines_sentiment(headlines)
         stock_performance = self.analyze_stock_performance()
         financial_metrics = self.get_financial_metrics()
+
         
         return {
             'symbol': self.symbol,
@@ -96,21 +97,31 @@ class StockAnalyzer:
 
 
 # 3B model
-sa_llm = OllamaLLM(model="mattarad/llama3.2-3b-instruct-mqc-sa", temperature=0.25)
+sa_llm = OllamaLLM(model="mattarad/llama3.2-1b-instruct-mqc-sa", temperature=0.25)
 
 
 class GetTimestampTool(BaseTool):
     name: str = "Get Timestamp Tool"
     description: str = "This tool is used to obtain a timestamp"
 
-    def _run(self) -> str:
-        return str(datetime.now().timestamp())
+    def _run(self) -> int:
+        return round(datetime.now().timestamp())
 
 class SentimentAnalysisTool(BaseTool):
     name: str = "Sentiment Analysis Tool"
-    description: str = "This tool analyzes the sentiment of a given text and returns a SentimentAnalysisToolOutput."
-    args_schema: Type[BaseModel] = SentimentAnalysisToolInput
+    description: str = "This tool analyzes the sentiment of a given text and returns a list of SentimentAnalysisToolOutput."
+    args_schema: Type[BaseModel] = NewsArticles
 
-    def _run(self, input_data: SentimentAnalysisToolInput) -> SentimentAnalysisToolOutput:
-        return sa_llm.invoke(input_data.text)
+    def _run(self, articles: NewsArticles) -> List[SentimentAnalysisToolOutput]:
+        analysis = []
+        for article in articles:
+            sentiment = sa_llm.invoke(article.articles)
+
+            sentiment_output = SentimentAnalysisToolOutput(
+                reasoning=sentiment.get("reasoning"),
+                sentiment_score=sentiment.get("sentiment_score"),
+                confidence_score=sentiment.get("confidence_score")
+            )
+            analysis.append(sentiment_output)
+        return analysis
 

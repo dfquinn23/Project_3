@@ -6,8 +6,10 @@ from typing import List
 # class TimestampOutput(BaseModel):
 #     timemstamp: str
 
+
 class SentimentAnalysisToolInput(BaseModel):
-    text: str
+    title: str = Field(description="The title of the article or blog post.")
+    summary: str = Field(..., description="The text to be analyzed for sentiment.")
     # Add other fields as necessary
 
 class SentimentAnalysisToolOutput(BaseModel):
@@ -20,15 +22,22 @@ class CompanyInfo(BaseModel):
     company_name: str
     ticker: str
 
+class NewsArticles(BaseModel):
+    company_name: str
+    ticker: str
+    summaries: list[str]= Field(..., description="the list of news articles and blog post summaries.")
+
 class FinancialAnalysis(BaseModel):
     company_name: str
     ticker: str
-    financial_analysis: list[str]
+    summaries: list[str]= Field(..., description="the list of news articles and blog post summaries.")
+    financial_report: str
 
 class SentimentAnalysis(BaseModel):
     company_name: str
     ticker: str
-    sentiment_analysis: str
+    summaries: list[str]= Field(..., description="the list of news articles and blog post summaries.")
+    financial_report: str
     analysis: list[SentimentAnalysisToolOutput]
     average_sentiment_score: float
 
