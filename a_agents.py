@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings('ignore')
+
 from crewai import Agent, LLM
 from crewai_tools import ScrapeWebsiteTool, SerperDevTool
 from langchain_openai import OpenAI
@@ -6,9 +9,8 @@ import os
 from dotenv import load_dotenv
 
 from d_tools import GetTimestampTool, SentimentAnalysisTool, FormatJSONReportTool
-from typing import List
-from models import ArticleSummary
-from litellm import completion
+# from typing import List
+# from models import ArticleSummary
 
 # Load environment variables
 load_dotenv()
@@ -21,17 +23,9 @@ os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
 def get_llm(num) -> LLM:
     try:
         if num == 0:
-            return completion(
-                api_key=OPENAI_API_KEY, 
-                model="gpt-4o-mini", 
-                temperature=0.3)
+            return OpenAI(api_key=OPENAI_API_KEY, model="gpt-4o-mini", temperature=0.3)
         else:
-            return completion(
-                model="mattarad/llama3.2-3b-instruct-mqc-sa",
-                temperature=0.3,
-                api_base="http://127.0.0.1:11434",  # Update to match `ollama` port
-                provider="ollama"  # Set to 'ollama' if using locally
-            )
+            return LLM(model="ollama/llama3:latest", temperature=0.3, base_url="http://localhost:11434")
     except Exception as e:
         print("Error in get_llm:", e)
 
@@ -53,8 +47,7 @@ class ResearchAgents:
         self.get_timestamp_tool = GetTimestampTool()
         self.get_sentiment_analysis_tool = SentimentAnalysisTool()
         self.format_json_report_tool = FormatJSONReportTool()
-        self.llm = get_llm(num=0)
-        
+        self.llm_num = 0
 
     def ticker_agent(self) -> Agent:
         return Agent(
@@ -67,9 +60,8 @@ class ResearchAgents:
                  """,
             verbose=True,
             tools=[self.search_tool],
-            # allow_delegation=True,
             memory=True,
-            llm=self.llm
+            llm=get_llm(self.llm_num)
         )
 
     def research_agent(self) -> Agent:
@@ -98,9 +90,8 @@ class ResearchAgents:
                  """,
             verbose=True,
             tools=[self.search_tool, self.scrape_tool],
-            # allow_delegation=True,
             memory=True,
-            llm=self.llm
+            llm=get_llm(self.llm_num)
         )
 
     def analyst_agent(self) -> Agent:
@@ -123,10 +114,10 @@ class ResearchAgents:
                 5. Ensure the report is cohesive and avoids redundant information.
                 """,
             verbose=True,
-            tools=[self.get_timestamp_tool, self.format_json_report_tool],
+            tools=[self.format_json_report_tool],
             max_retry_limit=1,
             memory=False,
-            llm=self.llm
+            llm=get_llm(self.llm_num)
         )
 
     def sentiment_agent(self) -> Agent:
@@ -135,6 +126,13 @@ class ResearchAgents:
             backstory="""
                  1. You are a Senior Financial Sentiment Analyst.
                  2. You specialize in conducting an informative financial sentiment analysis from the news articles and blog posts received by the News Article Researcher agent.
+                 Important:\n
+                 - You are to only get the timestamp when you start your work.\n
+                 - Once you have done the sentiment analysis, you are done.\n
+                 - The returned sentiment analysis should be a list containing:
+                    1. the reason for the score
+                    2. the sentiment score
+                    3. the confidence score
                  """,
             goal="""
                  1. Take the financial news articles and blog posts summaries from the News Article Researcher agent.
@@ -147,8 +145,8 @@ class ResearchAgents:
                  """,
             max_iter=5,
             max_retry_limit=1,
-            llm=self.llm,
-            tools=[self.get_timestamp_tool, self.get_sentiment_analysis_tool],
+            llm=get_llm(self.llm_num),
+            tools=[self.get_sentiment_analysis_tool],
             memory=True,
             verbose=True
         )

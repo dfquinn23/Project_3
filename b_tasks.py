@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings('ignore')
+
 from crewai import Agent, Task
 from models import CompanyInfo, FinancialAnalysis, SentimentAnalysis, ArticleSummary
 from models import CompanyInfo, NewsArticles, FinancialAnalysis, SentimentAnalysis
@@ -62,7 +65,7 @@ class AgentTasks:
                 "}"
             ),
             agent=agent,
-            expected_output="A structured JSON report containing the financial analysis",
+            expected_output="A structured JSON report containing the FinancialAnalysis",
             context=tasks,
             output_pydantic=FinancialAnalysis
         )
@@ -74,29 +77,17 @@ class AgentTasks:
         return Task(
             name="Get Sentiment",
             description=(
-                "Conduct a financial sentiment analysis for all of the articles and blog posts that the News Article Researcher agent provided from the Get News task."
-                "NewsSummaries.summaries will contain the list of articles from the Get News task."
-                "Remember to also get a timestamp for when you save the file and save it to the tasks timestamp variable under this task."
-                "Don't forget to use the obtained timestamp in the saved file name."
+                "Conduct a financial sentiment analysis for all of the articles and blog posts that the News Article Researcher agent provided from the Get News task. "
+                "NewsSummaries will contain the list of articles from the Get News task."
             ),
             agent=agent,
             expected_output=(
-                f"A JSON object containing the {self.company_name}, ticker, and a summary of the research that you have done."
-                "IMPORTANT:\n"
-                "OUTPUT SHOULD LOOK LIKE:\n"
-                "{\n"
-                f"'company_name': {self.company_name}',\n"
-                f"'ticker': [the found ticker for {self.company_name}]',\n"
-                f"summaries: list[str],\n"
-                "'financial_report': 'your overall financial sentiment analysis summary goes here.',\n"
-                "'analysis': list[SentimentAnalysisToolOutput]\n"
-                "'average_sentiment_score': [float of an average sentimentscore]',\n"
-                "}\n"
+                "A structured JSON object containing the SentimentAnalysis"
             ),
 
-            output_file=f"output/financial_analysis_{round(timestamp)}.md",
+            output_file=f"output/financial_analysis_{round(timestamp)}.json",
             context=tasks,
-            output_pydantic=SentimentAnalysis  # Ensure this is a valid subclass of BaseModel
+            output_json=SentimentAnalysis  # Ensure this is a valid subclass of BaseModel
         )
 
 

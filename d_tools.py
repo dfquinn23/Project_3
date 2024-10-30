@@ -1,7 +1,10 @@
+import warnings
+warnings.filterwarnings('ignore')
+
 import yfinance as yf
 import pandas as pd
 import requests
-from typing import List, Dict, Type
+from typing import List, Dict, Type, Optional
 import os
 from datetime import datetime, timedelta
 import json
@@ -90,7 +93,7 @@ class StockAnalyzer:
 try:
     sa_llm = OllamaLLM(
         model="mattarad/llama3.2-3b-instruct-mqc-sa",  # Updated to 3b model
-        temperature=0.25,
+        temperature=0.1,
         base_url="http://localhost:11434"  # Add explicit base URL
     )
 except Exception as e:
@@ -101,7 +104,7 @@ except Exception as e:
 
 class GetTimestampTool(BaseTool):
     name: str = "Get Timestamp Tool"
-    description: str = "This tool is used to obtain a timestamp"
+    description: str = "This tool is used to obtain a timestamp, and does not take in any arguments."
 
     def _run(self) -> int:
         return round(datetime.now().timestamp())
@@ -111,49 +114,64 @@ class SentimentAnalysisTool(BaseTool):
     description: str = "This tool iterantes through a list of text, analyzes the sentiment of the text and returns a list of SentimentAnalysisToolOutput."
     args_schema: Type[BaseModel] = NewsArticles
 
-    def _run(self, articles: NewsArticles) -> List[SentimentAnalysisToolOutput]:
+    def _run(self, company_name: str, ticker: str, summaries: list[str]) -> List[SentimentAnalysisToolOutput]:
         analysis = []
-        for article in articles:
-            sentiment = sa_llm.invoke(article.articles)
+        for summary in summaries:
+            sentiment = sa_llm.invoke(summary)
+            if isinstance(sentiment, dict):
+                # Process as a dictionary with expected keys
+                sentiment_output = SentimentAnalysisToolOutput(
+                    reasoning=sentiment.get("reasoning", "No reasoning provided"),
+                    sentiment_score=sentiment.get("sentiment_score", 0.0),
+                    confidence_score=sentiment.get("confidence_score", 0.0)
+                )
+            elif isinstance(sentiment, str):
+                # Process as a string
+                sentiment_output = SentimentAnalysisToolOutput(
+                    reasoning=f"Sentiment analysis result: {sentiment}",
+                    sentiment_score=1.0 if sentiment.lower() == "positive" else 0.0,
+                    confidence_score=0.9  # Default confidence score
+                )
+            else:
+                # Handle any unexpected types with a default response
+                sentiment_output = SentimentAnalysisToolOutput(
+                    reasoning="Unexpected response type",
+                    sentiment_score=0.0,
+                    confidence_score=0.0
+                )
 
-            sentiment_output = SentimentAnalysisToolOutput(
-                reasoning=sentiment.get("reasoning"),
-                sentiment_score=sentiment.get("sentiment_score"),
-                confidence_score=sentiment.get("confidence_score")
-            )
             analysis.append(sentiment_output)
         return analysis
 
+
+
+class FormatJSONReportToolSchema(BaseModel):
+    company_name: str = Field(..., description="The name of the company")
+    ticker: str = Field(..., description="The ticker symbol of the company")
+    summaries: List[str] = Field(..., description="List of news article summaries")
+    financial_report: Optional[str] = Field(None, description="The financial report summary")
+
+# Update the tool class to use the schema
 class FormatJSONReportTool(BaseTool):
     name: str = "Format JSON Report Tool"
     description: str = "This tool formats financial analysis data into a structured JSON report"
+    args_schema: Type[BaseModel] = NewsArticles  # Expect the full input data as a dict
 
-    def _run(self, input_data: dict) -> str:
+    def _run(self, company_name: str, ticker: str, summaries: list[str]) -> str:
         """Format the input data into a structured JSON report"""
         try:
             report = {
                 "Company Analysis Report": {
                     "Company Information": {
-                        "Name": input_data.get("company_name"),
-                        "Ticker Symbol": input_data.get("ticker"),
+                        "Name": company_name,
+                        "Ticker Symbol": ticker,
                         "Report Generated": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     },
                     "News Summaries": [
-                        f"• {summary}" for summary in input_data.get("summaries", [])
+                        f"• {summary}" for summary in summaries
                     ],
                     "Financial Analysis": {
-                        "Report": input_data.get("financial_report"),
-                        "Sentiment Analysis": {
-                            "Individual Article Analysis": [
-                                {
-                                    "Analysis": analysis.get("reasoning"),
-                                    "Sentiment Score": f"{analysis.get('sentiment_score', 0):.2f}",
-                                    "Confidence": f"{analysis.get('confidence_score', 0):.2f}"
-                                }
-                                for analysis in input_data.get("analysis", [])
-                            ],
-                            "Overall Sentiment Score": f"{input_data.get('average_sentiment_score', 0):.2f}"
-                        }
+                        "Report": financial_report or "No financial report available",
                     }
                 }
             }
