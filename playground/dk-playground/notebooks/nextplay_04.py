@@ -5,7 +5,6 @@ import openai
 from dotenv import load_dotenv
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import SerperDevTool, ScrapeWebsiteTool, BaseTool, Tool
-#from crewai.agent import Tool
 from pydantic import BaseModel
 from IPython.display import Markdown
 from langchain_openai import OpenAI
@@ -41,7 +40,6 @@ class MyCustomTool(BaseTool):
         stock = yf.Ticker('TSLA')
         data = stock.history(period="max")
         return data
-
 
 
 def get_stock_data(ticker):
