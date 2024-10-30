@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings('ignore')
+
 from crewai import Crew, Process
 from a_agents import ResearchAgents
 from b_tasks import AgentTasks
@@ -27,6 +30,7 @@ class CompanyResearchCrew:
             process=Process.sequential,
             verbose=True
         )
+
 
     def kickoff(self):
         if not self.crew:
