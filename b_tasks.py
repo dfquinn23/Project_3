@@ -1,6 +1,3 @@
-import warnings
-warnings.filterwarnings('ignore')
-
 from crewai import Agent, Task
 from models import CompanyInfo, FinancialAnalysis, SentimentAnalysis, ArticleSummary
 from models import CompanyInfo, NewsArticles, FinancialAnalysis, SentimentAnalysis

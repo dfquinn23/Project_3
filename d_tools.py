@@ -1,6 +1,3 @@
-import warnings
-warnings.filterwarnings('ignore')
-
 import yfinance as yf
 import pandas as pd
 import requests
@@ -93,7 +90,6 @@ class StockAnalyzer:
 try:
     sa_llm = OllamaLLM(
         model="mattarad/llama3.2-3b-instruct-mqc-sa",  # Updated to 3b model
-        temperature=0.1,
         base_url="http://localhost:11434"  # Add explicit base URL
     )
 except Exception as e:
@@ -171,7 +167,7 @@ class FormatJSONReportTool(BaseTool):
                         f"• {summary}" for summary in summaries
                     ],
                     "Financial Analysis": {
-                        "Report": financial_report or "No financial report available",
+                        "Report": '[financial_report]' or "No financial report available",
                     }
                 }
             }

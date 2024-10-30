@@ -1,6 +1,3 @@
-import warnings
-warnings.filterwarnings('ignore')
-
 from c_crew import CompanyResearchCrew
 from utils.agentsealogo import display_logo
 import json

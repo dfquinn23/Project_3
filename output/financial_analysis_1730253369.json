@@ -1,0 +1,27 @@
+{
+  "company_name": "Example Corp",
+  "ticker": "EXMPL",
+  "summaries": [
+    "Example Corp has shown a remarkable performance this quarter.",
+    "The growth rate of Example Corp exceeds expectations."
+  ],
+  "financial_report": "Example Corp reported a 20% increase in revenue compared to the previous year.",
+  "analysis": [
+    {
+      "reasoning": "The sentiment is positive based on the financial context of the sentence.",
+      "sentiment_score": 0.5,
+      "confidence_score": 0.9
+    },
+    {
+      "reasoning": "The sentiment is positive based on the financial context of the sentence.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    },
+    {
+      "reasoning": "The sentiment is positive based on the financial context of the sentence.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    }
+  ],
+  "average_sentiment_score": 0.83
+}

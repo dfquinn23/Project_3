@@ -1,6 +1,3 @@
-import warnings
-warnings.filterwarnings('ignore')
-
 from crewai import Agent, LLM
 from crewai_tools import ScrapeWebsiteTool, SerperDevTool
 from langchain_openai import OpenAI
@@ -23,9 +20,10 @@ os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
 def get_llm(num) -> LLM:
     try:
         if num == 0:
-            return OpenAI(api_key=OPENAI_API_KEY, model="gpt-4o-mini", temperature=0.3)
+            return OpenAI(api_key=OPENAI_API_KEY, model="gpt-4o-mini")
         else:
-            return LLM(model="ollama/llama3:latest", temperature=0.3, base_url="http://localhost:11434")
+            return LLM(model="ollama/llama3.1:70b", base_url="http://localhost:11434")
+            # return LLM(model="ollama/llama3:latest", base_url="http://localhost:11434")
     except Exception as e:
         print("Error in get_llm:", e)
 
@@ -72,7 +70,7 @@ class ResearchAgents:
                  2. Search for recent news articles about the ticker symbol using 
                      financial news websites and social media platforms, focusing 
                      on identifying headlines or summaries that have been published 
-                     within the last 24 hours. Target sources include reputable 
+                     within the last 72 hours. Target sources include reputable 
                      news organizations, such as Bloomberg, CNBC, or Reuters.
                  3. Refine search results by excluding articles from sources 
                      known for biased reporting or lack of objectivity.
@@ -140,7 +138,7 @@ class ResearchAgents:
                  IMPORTANT:
                  - Only use the tools provided below to complete your task.
                  - Only conduct a sentiment analysis on the financial news articles and blog posts summaries for {self.company} provided by the News Article Researcher agent using the tools you have.
-                 - YOU ONLY NEED TO GET THE TIMESTAMP ONCE!
+                 - Make your output includes the information from the pervious agents.
                  """,
             max_iter=5,
             max_retry_limit=1,
