@@ -145,11 +145,11 @@ class SentimentAnalysisTool(BaseTool):
 
 
 
-class FormatJSONReportToolSchema(BaseModel):
-    company_name: str = Field(..., description="The name of the company")
-    ticker: str = Field(..., description="The ticker symbol of the company")
-    summaries: List[str] = Field(..., description="List of news article summaries")
-    financial_report: Optional[str] = Field(None, description="The financial report summary")
+# class FormatJSONReportToolSchema(BaseModel):
+#     company_name: str = Field(..., description="The name of the company")
+#     ticker: str = Field(..., description="The ticker symbol of the company")
+#     summaries: List[str] = Field(..., description="List of news article summaries")
+#     financial_report: Optional[str] = Field(None, description="The financial report summary")
 
 # Update the tool class to use the schema
 class FormatJSONReportTool(BaseTool):

@@ -114,7 +114,6 @@ class ResearchAgents:
                 5. Ensure the report is cohesive and avoids redundant information.
                 """,
             verbose=True,
-            tools=[self.format_json_report_tool],
             max_retry_limit=1,
             memory=False,
             llm=get_llm(self.llm_num)
