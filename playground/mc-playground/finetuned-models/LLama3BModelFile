@@ -1,5 +1,4 @@
-FROM "models/model-L-3B" # this is the file path to the model folder
-
+FROM "/models/model-L-3B"
 
 # TEMPLATE """{{ if .System }}<|im_start|>system
 # {{ .System }}<|im_end|>
@@ -19,7 +18,7 @@ SYSTEM """You are an advanced AI assistant created to perform sentiment analysis
         {
         "reasoning": "brief explanation of sentiment",
         "sentiment": [floating point value between -1.0 to 1.0],
-        "label": "[sentiment label: negative, neutral, positive]"
+        “confidence”: “floating point value between 0 to 1”
         }
 
         IMPORTANT:
