@@ -1,0 +1,22 @@
+{
+  "company_name": "The RealReal, Inc.",
+  "ticker": "REAL",
+  "summaries": [
+    "The RealReal Reports Strong Q2 Earnings, Beats Expectations",
+    "The RealReal Expands into New Markets with Strategic Partnerships"
+  ],
+  "financial_report": "Based on the company's Q2 earnings report and market trends, The RealReal, Inc. appears to be performing well financially, with strong revenue growth and expanding profitability.",
+  "analysis": [
+    {
+      "reasoning": "Positive sentiment due to strong earnings and growth",
+      "sentiment_score": 0.8,
+      "confidence_score": 0.9
+    },
+    {
+      "reasoning": "Positive sentiment due to expansion and growth",
+      "sentiment_score": 0.7,
+      "confidence_score": 0.8
+    }
+  ],
+  "average_sentiment_score": 0.75
+}
