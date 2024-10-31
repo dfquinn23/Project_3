@@ -1,0 +1,22 @@
+{
+  "company_name": "Apple",
+  "ticker": "AAPL",
+  "summaries": [
+    "The article cites Jim Cramer's warning against following sell recommendations on Apple stock, suggesting a long-term focus rather than short-term fluctuations, indicating a positive outlook despite recent downgrades by other analysts.",
+    "The sentiment is positive based on the financial context of the sentence."
+  ],
+  "financial_report": "",
+  "analysis": [
+    {
+      "reasoning": "The article cites Jim Cramer's warning against following sell recommendations on Apple stock, suggesting a long-term focus rather than short-term fluctuations, indicating a positive outlook despite recent downgrades by other analysts.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    },
+    {
+      "reasoning": "The sentiment is positive based on the financial context of the sentence.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    }
+  ],
+  "average_sentiment_score": 1.0
+}

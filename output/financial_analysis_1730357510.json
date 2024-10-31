@@ -1,0 +1,22 @@
+{
+  "company_name": "Example Corp",
+  "ticker": "EXMP",
+  "summaries": [
+    "Example Corp reported a significant increase in revenue this quarter.",
+    "The new product launch was received positively by the market."
+  ],
+  "financial_report": "Example Corp's financial report shows a 20% increase in overall revenue compared to the previous year.",
+  "analysis": [
+    {
+      "reasoning": "The sentiment is positive based on the financial context of the sentence.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    },
+    {
+      "reasoning": "The sentiment is positive based on the financial context of the sentence.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    }
+  ],
+  "average_sentiment_score": 1.0
+}

@@ -1,0 +1,28 @@
+{
+  "company_name": "Netflix",
+  "ticker": "NFLX",
+  "summaries": [
+    "Netflix's strong revenue growth and successful ad-supported tier have led to a positive outlook for the company.",
+    "Positive sentiment based on financial context.",
+    "Netflix missed quarterly earnings estimates, leading to negative sentiment due to concerns about subscriber growth."
+  ],
+  "financial_report": "The latest financial report shows Netflix's increasing revenue but highlights missed earnings estimates and subscriber growth challenges.",
+  "analysis": [
+    {
+      "reasoning": "The article highlights Netflix's strong revenue growth, successful ad-supported tier, and plans for original content expansion, indicating a positive outlook for the company.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    },
+    {
+      "reasoning": "The sentiment is positive based on the financial context of the sentence.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    },
+    {
+      "reasoning": "The article reports that Netflix missed its quarterly earnings estimates, which likely led to a negative sentiment towards the company's stock performance. The article also mentions concerns about subscriber growth and the effectiveness of recent strategies, further contributing to a negative sentiment.",
+      "sentiment_score": -1.0,
+      "confidence_score": 0.9
+    }
+  ],
+  "average_sentiment_score": 0.0
+}
