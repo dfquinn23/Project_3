@@ -1,0 +1,21 @@
+{
+  "company_name": "Microsoft",
+  "ticker": "MSFT",
+  "summaries": [
+    "Microsoft reported an earnings and revenue beat for its fiscal first quarter, with revenue growing 16%, but the stock fell 4% in after-hours trading due to a forecast of slower growth. Earnings per share were $3.30, exceeding expectations of $3.10, while revenue reached $65.59 billion, higher than the anticipated $64.51 billion. The company expects revenue of $68.1 to $69.1 billion for the next quarter, below analyst forecasts."
+  ],
+  "financial_report": "Microsoft reported a fiscal first quarter with earnings per share of $3.30 and revenue of $65.59 billion.",
+  "analysis": [
+    {
+      "reasoning": "The sentiment is positive based on the financial context of the sentence.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.8
+    },
+    {
+      "reasoning": "Despite the earnings beat, the negative forecast led to a decline in stock price which creates mixed sentiment.",
+      "sentiment_score": 0.5,
+      "confidence_score": 0.7
+    }
+  ],
+  "average_sentiment_score": 0.75
+}

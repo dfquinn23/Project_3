@@ -59,6 +59,9 @@ Additionally, we utilized several additional tools from outside the scope of cla
 4. Ollama/trained Llama LLMs
 5. YahooFinance API
 
+## Sequential Process
+![Sequential Process](utils/sequential_process.png)
+
 #### Notes on the LLM Models
 Our AI project employs one of two fine-tuned models:
 

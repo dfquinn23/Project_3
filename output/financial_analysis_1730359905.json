@@ -1,0 +1,28 @@
+{
+  "company_name": "Netflix",
+  "ticker": "NFLX",
+  "summaries": [
+    "Netflix's advertising business is growing, which is a positive indicator for the company's future prospects.",
+    "There is a significant increase in ad-tier memberships, suggesting strong demand for Netflix's content.",
+    "Guggenheim's positive outlook on Netflix due to strong subscription growth and potential advertising revenue."
+  ],
+  "financial_report": "",
+  "analysis": [
+    {
+      "reasoning": "The article reports that Netflix's advertising business is growing, which is a positive indicator for the company's future prospects. The article also mentions a significant increase in ad-tier memberships, which suggests a strong demand for Netflix's content. Additionally, the article reports a significant increase in subscribers, which further supports the growth of the company's user base.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    },
+    {
+      "reasoning": "The sentiment is positive based on the financial context of the sentence.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    },
+    {
+      "reasoning": "The article reports Guggenheim's positive outlook on Netflix due to strong subscription growth and potential advertising revenue, indicating a positive sentiment towards the company.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    }
+  ],
+  "average_sentiment_score": 1.0
+}
