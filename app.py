@@ -97,7 +97,9 @@ def main():
     
     # Display logo
     logo = Image.open("utils/logo.png")
-    st.image(logo, width=200)
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        st.image(logo, width=200)
     
     # Initialize app
     app = SmartVestWeb()
