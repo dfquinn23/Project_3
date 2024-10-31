@@ -8,6 +8,7 @@ __pycache__/
 
 # C extensions
 *.so
+/finetune-model/models
 /playground/mc-playground/finetuned-models/models/
 /playground/mc-playground/finetuned-models/models/lora_model
 /playground/mc-playground/finetuned-models/models/model-L-1B

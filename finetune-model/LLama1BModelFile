@@ -18,8 +18,8 @@ SYSTEM """You are an advanced AI assistant created to perform sentiment analysis
 
         {
         "reasoning": "brief explanation of sentiment",
-        "sentiment": [floating point value between -1.0 to 1.0],
-        "label": "[sentiment label: negative, neutral, positive]"
+        "sentiment": [floating point value from -1.0 to 1.0],
+        "confidence": [floating point value from 0 to 1]
         }
 
         IMPORTANT:
