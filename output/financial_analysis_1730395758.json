@@ -1,0 +1,40 @@
+{
+  "company_name": "The RealReal",
+  "ticker": "REAL",
+  "summaries": [
+    "The RealReal is focusing on its resale business but has reported a loss despite efforts to downsize its operations, indicating a cautious sentiment regarding its financial stability.",
+    "The latest report discusses the trajectory of The RealReal since its IPO in 2019, highlighting recent profitability for the first time, contributing to a more positive outlook.",
+    "The analysis of The RealReal's turnaround plan focuses on improvements in stock price and commitment to growth, indicating confidence in future performance.",
+    "The report covers The RealReal's influence in the luxury resale market, suggesting a positive brand impact but rooted in market context, leading to a neutral-positive sentiment.",
+    "The launching of an installation addressing counterfeit goods demonstrates proactive brand management, enhancing reputation and building trust."
+  ],
+  "financial_report": "The RealReal has shown variable performance since its IPO, with recent improvements in profitability juxtaposed against a backdrop of prior losses and market challenges.",
+  "analysis": [
+    {
+      "reasoning": "The RealReal is focusing on its resale business but has reported a loss despite efforts to downsize its operations, indicating a cautious sentiment regarding its financial stability.",
+      "sentiment_score": -0.5,
+      "confidence_score": 0.85
+    },
+    {
+      "reasoning": "The latest report discusses the trajectory of The RealReal since its IPO in 2019, highlighting recent profitability for the first time, contributing to a more positive outlook.",
+      "sentiment_score": 0.6,
+      "confidence_score": 0.78
+    },
+    {
+      "reasoning": "The analysis of The RealReal's turnaround plan focuses on improvements in stock price and commitment to growth, indicating confidence in future performance.",
+      "sentiment_score": 0.7,
+      "confidence_score": 0.8
+    },
+    {
+      "reasoning": "The report covers The RealReal's influence in the luxury resale market, suggesting a positive brand impact but rooted in market context, leading to a neutral-positive sentiment.",
+      "sentiment_score": 0.4,
+      "confidence_score": 0.75
+    },
+    {
+      "reasoning": "The launching of an installation addressing counterfeit goods demonstrates proactive brand management, enhancing reputation and building trust.",
+      "sentiment_score": 0.5,
+      "confidence_score": 0.8
+    }
+  ],
+  "average_sentiment_score": 0.24
+}

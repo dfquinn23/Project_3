@@ -1,6 +1,6 @@
 from crewai import Agent, LLM
 from crewai_tools import ScrapeWebsiteTool, SerperDevTool
-from langchain_openai import OpenAI
+from openai import OpenAI
 
 import os
 from dotenv import load_dotenv
@@ -15,17 +15,27 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 XAI_API_KEY = os.getenv("XAI_API_KEY")
 CLAUDE_API_KEY = os.getenv("CLAUDE_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
 
 def get_llm(num) -> LLM:
     try:
         if num == 0:
-            return OpenAI(api_key=OPENAI_API_KEY, model="gpt-4o-mini")
+            # returns GPT 4o Mini
+            return OpenAI(api_key=OPENAI_API_KEY, model="gpt-4o-mini", temperature=0.2)
+        if num == 1:
+            # returns X AI Grok-2 Mini
+            return OpenAI(api_key=XAI_API_KEY, base_url="https://api.x.ai/v1", model="grok-beta", temperature=0.2)
+        if num == 2:
+            # returns Groq (LPU not GPPU) Llama3-70b-8192
+            return OpenAI(api_key=GROQ_API_KEY, base_url="https://api.groq.com/openai/v1", model="llama3-70b-8192", temperature=0.2)
         else:
-            return LLM(model="ollama/llama3.1:70b", base_url="http://localhost:11434")
+            # returns Ollama/llama3.1:8b
+            return LLM(model="ollama/llama3.1:8b", base_url="http://localhost:11434", temperature=0.2)
             # return LLM(model="ollama/llama3:latest", base_url="http://localhost:11434")
     except Exception as e:
-        print("Error in get_llm:", e)
+        print("preparing model")
+        # print("Error in get_llm:", e)
 
 """
 Purpose:
@@ -45,7 +55,7 @@ class ResearchAgents:
         self.get_timestamp_tool = GetTimestampTool()
         self.get_sentiment_analysis_tool = SentimentAnalysisTool()
         self.format_json_report_tool = FormatJSONReportTool()
-        self.llm_num = 0
+        self.llm_num = 1
 
     def ticker_agent(self) -> Agent:
         return Agent(
@@ -59,7 +69,7 @@ class ResearchAgents:
             verbose=True,
             tools=[self.search_tool],
             memory=True,
-            llm=get_llm(self.llm_num)
+            llm=get_llm(1)
         )
 
     def research_agent(self) -> Agent:
@@ -89,7 +99,7 @@ class ResearchAgents:
             verbose=True,
             tools=[self.search_tool, self.scrape_tool],
             memory=True,
-            llm=get_llm(self.llm_num)
+            llm=get_llm(2)
         )
 
     def analyst_agent(self) -> Agent:
@@ -108,13 +118,12 @@ class ResearchAgents:
                    - Consolidated summary of all news articles
                    - Overall financial analysis incorporating all data points
                 3. Use the Format JSON Report Tool to structure your final output.
-                4. Include a timestamp in your report using the Get Timestamp Tool.
-                5. Ensure the report is cohesive and avoids redundant information.
+                4. Ensure the report is cohesive and avoids redundant information.
                 """,
             verbose=True,
             max_retry_limit=1,
             memory=False,
-            llm=get_llm(self.llm_num)
+            llm=get_llm(1)
         )
 
     def sentiment_agent(self) -> Agent:
@@ -124,7 +133,6 @@ class ResearchAgents:
                  1. You are a Senior Financial Sentiment Analyst.
                  2. You specialize in conducting an informative financial sentiment analysis from the news articles and blog posts received by the News Article Researcher agent.
                  Important:\n
-                 - You are to only get the timestamp when you start your work.\n
                  - Once you have done the sentiment analysis, you are done.\n
                  - The returned sentiment analysis should be a list containing:
                     1. the reason for the score
@@ -134,37 +142,17 @@ class ResearchAgents:
             goal="""
                  1. Take the financial news articles and blog posts summaries from the News Article Researcher agent.
                  2. Run a financial sentiment analysis on the articles and blog posts provided by the News Article Researcher agent using only the tools you have.
-                 3. Before you finish you must get the current timestamp and save it to the tasks timestamp
                  IMPORTANT:
-                 - Only use the tools provided below to complete your task.
+                 - Only use the tool provided below to complete your task.
                  - Only conduct a sentiment analysis on the financial news articles and blog posts summaries for {self.company} provided by the News Article Researcher agent using the tools you have.
-                 - Make your output includes the information from the pervious agents.
+                 - Make sure your output includes the correct information from the pervious agents.
+                 - The company and ticker should not be made up but should be obtained from previous agents.
                  """,
-            max_iter=5,
+            max_iter=2,
             max_retry_limit=1,
-            llm=get_llm(self.llm_num),
+            llm=get_llm(1),
             tools=[self.get_sentiment_analysis_tool],
             memory=True,
             verbose=True
         )
 
-    def get_analysis_task(self, analyst_agent, dependencies):
-        article_summaries = fetch_article_summaries() 
-
-        # Ensure article_summaries is a list of ArticleSummary objects
-        if isinstance(article_summaries, str):
-            # Convert string to list of ArticleSummary objects
-            article_summaries = parse_article_summaries(article_summaries)  # Implement this function
-
-        # Use a dictionary to represent the task
-        task = {
-            "output_pydantic": article_summaries
-        }
-
-        return task
-
-    def get_tool_input(self) -> dict:
-        """Creates a tool input dictionary for the stock ticker search"""
-        return {
-            "search_query": f"{self.company} stock ticker"
-        }

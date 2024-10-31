@@ -89,8 +89,9 @@ class StockAnalyzer:
 # 3B model
 try:
     sa_llm = OllamaLLM(
-        model="mattarad/llama3.2-3b-instruct-mqc-sa",  # Updated to 3b model
-        base_url="http://localhost:11434"  # Add explicit base URL
+        model="mattarad/llama3.2-3b-instruct-mqc-sa",  # Updated to 1b model
+        base_url="http://localhost:11434",  # Add explicit base URL
+        temperature=0.35
     )
 except Exception as e:
     print(f"Error initializing Ollama: {e}")
@@ -120,13 +121,6 @@ class SentimentAnalysisTool(BaseTool):
                     reasoning=sentiment.get("reasoning", "No reasoning provided"),
                     sentiment_score=sentiment.get("sentiment_score", 0.0),
                     confidence_score=sentiment.get("confidence_score", 0.0)
-                )
-            elif isinstance(sentiment, str):
-                # Process as a string
-                sentiment_output = SentimentAnalysisToolOutput(
-                    reasoning=f"Sentiment analysis result: {sentiment}",
-                    sentiment_score=1.0 if sentiment.lower() == "positive" else 0.0,
-                    confidence_score=0.9  # Default confidence score
                 )
             else:
                 # Handle any unexpected types with a default response

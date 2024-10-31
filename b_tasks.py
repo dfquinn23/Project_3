@@ -75,11 +75,13 @@ class AgentTasks:
             name="Get Sentiment",
             description=(
                 "Conduct a financial sentiment analysis for all of the articles and blog posts that the News Article Researcher agent provided from the Get News task. "
-                "NewsSummaries will contain the list of articles from the Get News task."
+                "NewsSummaries will contain the list of articles from the Get News task. "
+                "Make sure you do not make up your own company_name and ticker symbol. "
+                "You must get company_name and ticker from previous tasks."
             ),
             agent=agent,
             expected_output=(
-                "A structured JSON object containing the SentimentAnalysis"
+                "A structured JSON object containing the SentimentAnalysis."
             ),
 
             output_file=f"output/financial_analysis_{round(timestamp)}.json",
