@@ -4,6 +4,7 @@ from PIL import Image
 import os
 import json
 from datetime import datetime
+from utils.visualization import display_sentiment_clock, beautify_financial_report
 
 class SmartVestWeb:
     def __init__(self):
@@ -55,7 +56,28 @@ class SmartVestWeb:
                 report = json.load(f)
                 
             st.subheader("Analysis Report")
-            st.write(report)
+            
+            # Display company name
+            company_name = report.get("company_name", "Unknown Company")
+            st.write(f"**Company Name:** {company_name}")
+            
+            # Display final summary
+            final_summary = report.get("summaries", [])
+            if isinstance(final_summary, list):
+                final_summary_cleaned = " ".join(final_summary)  # Join list elements into a single string
+            else:
+                final_summary_cleaned = final_summary
+            
+            st.write(f"**Final Summary:** {final_summary_cleaned}")
+            
+            # Assuming 'average_sentiment_score' is part of the report
+            average_sentiment_score = report.get("average_sentiment_score", 0)  # Default to 0 if not found
+            
+            # Display the sentiment clock
+            display_sentiment_clock(average_sentiment_score)  # Pass the sentiment score
+            
+            # Remove or comment out the beautification of the financial report
+            # financial_report = beautify_financial_report(report)
             
         except Exception as e:
             st.error(f"Error displaying report: {e}")
@@ -83,9 +105,11 @@ def main():
     # Header
     st.title("Agent Sea - AI Investment Advisor")
     st.markdown("""
-        Welcome to Agent Sea, your AI-powered investment advisor. 
+        <div style='font-family: Roboto, sans-serif;'>
+        Welcome to Agent Sea, your AI-powered Investment Advisor. 
         Enter a company name to get started.
-    """)
+        </div>
+    """, unsafe_allow_html=True)
     
     # Sidebar inputs
     with st.sidebar:
