@@ -1,0 +1,34 @@
+{
+  "company_name": "Apple",
+  "ticker": "AAPL",
+  "summaries": [
+    "Apple unveils new products during their annual event.",
+    "Analysts predict high demand for the new iPhone models.",
+    "Concerns about supply chain issues affecting production.",
+    "Apple shares rally on strong quarterly earnings report."
+  ],
+  "financial_report": "Apple reported better-than-expected earnings this quarter, driven by strong iPhone sales and services growth.",
+  "analysis": [
+    {
+      "reasoning": "Market reaction was positive due to innovative products.",
+      "sentiment_score": 0.8,
+      "confidence_score": 0.9
+    },
+    {
+      "reasoning": "Analysts express optimism about sales growth.",
+      "sentiment_score": 0.7,
+      "confidence_score": 0.85
+    },
+    {
+      "reasoning": "Supply chain concerns introduce a risk factor.",
+      "sentiment_score": -0.3,
+      "confidence_score": 0.75
+    },
+    {
+      "reasoning": "Strong earnings report boosted investor confidence.",
+      "sentiment_score": 0.9,
+      "confidence_score": 0.95
+    }
+  ],
+  "average_sentiment_score": 0.53
+}

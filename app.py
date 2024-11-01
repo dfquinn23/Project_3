@@ -4,6 +4,8 @@ from PIL import Image
 import os
 import json
 from datetime import datetime
+from utils.visualization import display_sentiment_clock, beautify_financial_report
+
 
 class SmartVestWeb:
     def __init__(self):
@@ -37,53 +39,53 @@ class SmartVestWeb:
             except Exception as e:
                 st.error(f"Error during analysis: {e}")
 
-    def display_final_report(self):
-        """Display the final report from the output directory"""
+    def display_report(self):
         try:
-            report_pattern = f"output/financial_analysis_*.md"
-            latest_file = max(glob.glob(report_pattern), key=os.path.getctime)
-            with open(latest_file, 'r') as file:
-                report_content = json.loads(file.read())  # Load JSON content
+            # Get the latest report file
+            output_dir = "output"
+            files = [f for f in os.listdir(output_dir) if f.endswith('.json')]
+            
+            if not files:
+                st.warning("No analysis reports found.")
+                return
+                
+            latest_file = max(files, key=lambda x: os.path.getctime(os.path.join(output_dir, x)))
+            file_path = os.path.join(output_dir, latest_file)
+            
+            # Read and display the report
+            with open(file_path, 'r') as f:
+                report = json.load(f)
+                
+            st.subheader("Analysis Report")
+            
+            # Display company name
+            company_name = report.get("company_name", "Unknown Company")
+            st.write(f"**Company Name:** {company_name}")
+            
+            # Display final summary
+            final_summary = report.get("summaries", [])
+            if isinstance(final_summary, list):
+                final_summary_cleaned = " ".join(final_summary)  # Join list elements into a single string
+            else:
+                final_summary_cleaned = final_summary
+            
+            st.write(f"**Final Summary:** {final_summary_cleaned}")
+            
+            # Assuming 'average_sentiment_score' is part of the report
+            average_sentiment_score = report.get("average_sentiment_score", 0)  # Default to 0 if not found
+            
+            # Display the sentiment clock
+            display_sentiment_clock(average_sentiment_score)  # Pass the sentiment score
+            
+            # Remove or comment out the beautification of the financial report
+            # financial_report = beautify_financial_report(report)
+            
+        except Exception as e:
+            st.error(f"Error displaying report: {e}")
 
-            # Beautify the report content
-            st.subheader("Final Report")
-            st.markdown(f"**Company Name:** {report_content['company_name']}")
-            st.markdown(f"**Ticker Symbol:** {report_content['ticker']}")
-            st.markdown("**News Summaries:**")
-            for summary in report_content['summaries']:
-                st.markdown(f"• {summary}")
-
-            st.markdown("**Financial Report:**")
-            st.markdown(report_content['financial_report'])
-
-            # Sentiment Analysis Visualization
-            self.visualize_sentiment(report_content['analysis'])
-
-        except FileNotFoundError:
-            st.error("Final report not found.")
-        except ValueError:
-            st.error("No report files found.")
-
-    def visualize_sentiment(self, analysis):
-        """Visualize sentiment scores using a gauge chart"""
-        average_sentiment = sum(item['sentiment_score'] for item in analysis) / len(analysis)
-        
-        # Create a gauge chart
-        fig = go.Figure(go.Indicator(
-            mode="gauge+number",
-            value=average_sentiment,
-            title={'text': "Average Sentiment Score"},
-            gauge={
-                'axis': {'range': [-1, 1]},
-                'bar': {'color': "blue"},
-                'steps': [
-                    {'range': [-1, 0], 'color': "red"},
-                    {'range': [0, 1], 'color': "green"}
-                ]
-            }
-        ))
-
-        st.plotly_chart(fig)
+def load_css():
+    with open("utils/style.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 def main():
     st.set_page_config(
@@ -106,13 +108,21 @@ def main():
     # Header
     st.title("Agent Sea - AI Investment Advisor")
     st.markdown("""
-        Welcome to Agent Sea, your AI-powered investment advisor. 
-        Get personalized investment recommendations based on market analysis 
-        and your investment preferences.
-    """)
-
-    app.display_sidebar()
-    app.display_final_report()
+        <div style='font-family: Roboto, sans-serif;'>
+        Welcome to Agent Sea, your AI-powered Investment Advisor. 
+        Enter a company name to get started.
+        </div>
+    """, unsafe_allow_html=True)
+    
+    # Sidebar inputs
+    with st.sidebar:
+        company_name = st.text_input("Enter company name:", "Apple")
+        if st.button("Analyze"):
+            app.run_analysis(company_name)
+    
+    # Display report if analysis has been run
+    if st.session_state.analysis_results:
+        app.display_report()
 
 if __name__ == "__main__":
     main()
