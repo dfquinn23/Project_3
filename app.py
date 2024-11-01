@@ -6,6 +6,7 @@ import json
 from datetime import datetime
 from utils.visualization import display_sentiment_clock, beautify_financial_report
 
+
 class SmartVestWeb:
     def __init__(self):
         self.initialize_session_state()
