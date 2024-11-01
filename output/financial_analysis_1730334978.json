@@ -1,0 +1,16 @@
+{
+  "company_name": "Apple Inc",
+  "ticker": "AAPL",
+  "summaries": [
+    "Apple Inc has expanded its chipset lineup with the introduction of the M4 Pro and M4 Max, leveraging second-generation 3-nanometer technology to deliver enhanced performance and power efficiency for the Mac range."
+  ],
+  "financial_report": "",
+  "analysis": [
+    {
+      "reasoning": "The sentiment is positive based on the financial context of the sentence.",
+      "sentiment_score": 1.0,
+      "confidence_score": 0.9
+    }
+  ],
+  "average_sentiment_score": 1.0
+}

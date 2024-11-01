@@ -1,6 +1,5 @@
 from c_crew import CompanyResearchCrew
 from utils.agentsealogo import display_logo
-import json
 
 def main():
     # Display the Agent Sea logo
@@ -14,8 +13,7 @@ def main():
     crew = CompanyResearchCrew(company_name)
     crew.setup_crew()
     res = crew.kickoff()
-    print(f"Results from crew:")
-    print(res)
+    print(f"Results from crew: {res}")
 
 if __name__ == "__main__":
     main()
